@@ -23,7 +23,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.tabs
-    - navigation.expand
+    # - navigation.expand
     - navigation.footer
     - content.code.copy
     - search.highlight
@@ -120,5 +120,7 @@ extra_css:
   - css/dark_modified.css
   - css/font_modified.css
   - css/obsidian_wiki.css
+
+# js
 
 
