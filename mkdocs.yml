@@ -92,6 +92,10 @@ markdown_extensions:
       base_url: /
       strict: false
 
+zensical_nav:
+  recursive: true
+  include_index: true
+
 nav:
   - Home:
     - index.md
@@ -100,13 +104,7 @@ nav:
     - missing-semester: cs/missing-semester.md
   - Reading:
     - reading/index.md
-    - 夏目漱石:
-      - reading/夏目漱石/index.md
-      - reading/夏目漱石/哥儿.md
-      - reading/夏目漱石/我是猫.md
-    - 福尔摩斯:
-      - reading/福尔摩斯/index.md
-      - reading/福尔摩斯/紫藤别墅.md
+    - auto: reading
 
   
 # extra部分
