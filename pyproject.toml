@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zensical-hardbreak"
+version = "0.1.0"
+description = "A Zensical Markdown extension that renders ordinary newlines as hard breaks"
+requires-python = ">=3.10"
+dependencies = [
+    "Markdown>=3.5",
+]
+
+[project.entry-points."markdown.extensions"]
+zensical_hardbreak = "zensical_hardbreak:HardBreakExtension"
+
+[tool.setuptools]
+packages = ["zensical_hardbreak"]

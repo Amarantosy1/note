@@ -1227,7 +1227,7 @@ chmod用来更改权限</p>
 /&gt;&gt; to append</p>
 <p>if 不是一个program，pipeline不是一个program，它们都是bash language的一部分</p>
 <h3 id="question">question<a class="headerlink" href="#question" title="Permanent link">&para;</a></h3>
-<p>cd 为何内置于shell中？  </p>
+<p>cd 为何内置于shell中？</p>
 <blockquote>
 <p>因为外部程序无法改变父进程，也就是当前 Shell 的工作目录。</p>
 </blockquote>
@@ -1316,7 +1316,7 @@ s   Unix 域套接字</p>
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <ol>
-<li>写一个脚本，接收文件名参数（<code>$1</code>），用 <code>test -f</code> 或 <code>[ -f ... ]</code> 检查该文件是否存在，并根据结果输出不同提示。参见 <a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">Bash Conditional Expressions</a> 。  </li>
+<li>写一个脚本，接收文件名参数（<code>$1</code>），用 <code>test -f</code> 或 <code>[ -f ... ]</code> 检查该文件是否存在，并根据结果输出不同提示。参见 <a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">Bash Conditional Expressions</a> 。</li>
 <li>把上一题完成的脚本保存为文件（如 <code>check.sh</code>）。先运行 <code>./check.sh somefile</code> ，会发生什么？然后执行 <code>chmod +x check.sh</code> 再试一次。为什么这一步是必须的？（提示：比较 <code>chmod</code> 前后的 <code>ls -l check.sh</code> 输出）</li>
 </ol>
 </blockquote>
@@ -1551,7 +1551,7 @@ s   Unix 域套接字</p>
 <a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="c1"># 通过重定向到 /dev/null 来丢弃输出</span>
 <a id="__codelineno-12-18" name="__codelineno-12-18"></a>cmd<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </code></pre></div></td></tr></table></div></p>
-<p>fzf：模糊查找，从stdin中逐行读取输入，提供交互式界面筛选和选择  </p>
+<p>fzf：模糊查找，从stdin中逐行读取输入，提供交互式界面筛选和选择</p>
 <h3 id="3">3、环境变量<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>在shell中，空格的作用是分隔参数。<br />
 shell变量没有类型，本质上全部都是字符串。<br />
@@ -1564,11 +1564,11 @@ shell变量没有类型，本质上全部都是字符串。<br />
 </code></pre></div></td></tr></table></div></p>
 <p>当shell调用别的程序时，会同时传入环境变量</p>
 <p>特性：进程替换，<code>&lt;(command)</code>把输出存入临时文件，在某个程序只接受文件作为输入时很有用<br />
-<code>printenv</code>打印当前环境变量  </p>
+<code>printenv</code>打印当前环境变量</p>
 <h3 id="4">4、返回码<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <p>表示程序运行结束状态，0表示一切正常，非0表示执行中遇到了问题<br />
 Shell中的<code>&amp;&amp;</code>和<code>||</code>分别表示<code>And</code>和<code>Or</code>，Shell中的这两个运算符基于程序的返回码工作<br />
-在shell的<code>if</code>中，0表示True，非0表示False  </p>
+在shell的<code>if</code>中，0表示True，非0表示False</p>
 <h3 id="5">5、信号<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>信号的本质是一种软件终端，如，按下<code>control+c</code>时，会给shell一个中断当前进程的信号<br />
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
@@ -1688,7 +1688,7 @@ ssh还可以非交互式地执行命令</p>
 <a id="__codelineno-16-27" name="__codelineno-16-27"></a><span class="nb">alias</span><span class="w"> </span>ll
 <a id="__codelineno-16-28" name="__codelineno-16-28"></a><span class="c1"># 将打印 ll=&#39;ls -lh&#39;</span>
 </code></pre></div></td></tr></table></div></p>
-<p>如何配置自己的dotfiles  </p>
+<p>如何配置自己的dotfiles</p>
 <blockquote>
 <p>推荐的做法是：放在一个单独的目录里，纳入版本控制，再用脚本通过<strong>符号链接（symlink）</strong> 链接到实际位置。好处如下：<br />
 - <strong>安装方便</strong>：登录到一台新机器时，应用这些配置只需要一分钟。<br />
