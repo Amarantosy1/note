@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "zensical-hardbreak"
-version = "0.1.0"
-description = "A Zensical Markdown extension that renders ordinary newlines as hard breaks"
+name = "zensical-markdown-extensions"
+version = "0.2.0"
+description = "Markdown extensions for hard breaks and Obsidian wiki syntax in Zensical"
 requires-python = ">=3.10"
 dependencies = [
     "Markdown>=3.5",
@@ -13,6 +13,7 @@ dependencies = [
 
 [project.entry-points."markdown.extensions"]
 zensical_hardbreak = "zensical_hardbreak:HardBreakExtension"
+zensical_obsidian = "zensical_obsidian:ObsidianWikiExtension"
 
 [tool.setuptools]
-packages = ["zensical_hardbreak"]
+packages = ["zensical_hardbreak", "zensical_obsidian"]

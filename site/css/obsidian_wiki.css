@@ -1,0 +1,40 @@
+.obsidian-wiki-link {
+  text-decoration-style: dotted;
+  text-underline-offset: 0.15em;
+}
+
+.obsidian-wiki-link--missing,
+.obsidian-wiki-link--ambiguous,
+.obsidian-wiki-link--unsupported {
+  border-radius: 0.2rem;
+  padding: 0 0.15rem;
+  font-family: var(--md-code-font-family);
+  font-size: 0.9em;
+}
+
+.obsidian-wiki-link--missing {
+  color: var(--md-typeset-del-color);
+  background: color-mix(in srgb, var(--md-typeset-del-color) 10%, transparent);
+  text-decoration: underline dashed;
+}
+
+.obsidian-wiki-link--ambiguous {
+  color: var(--md-typeset-mark-color);
+  background: color-mix(in srgb, var(--md-typeset-mark-color) 12%, transparent);
+  text-decoration: underline dotted;
+}
+
+.obsidian-wiki-link--unsupported {
+  color: var(--md-default-fg-color--light);
+  background: var(--md-code-bg-color);
+  text-decoration: line-through;
+}
+
+.obsidian-wiki-link--image::before {
+  content: "🖼 ";
+}
+
+.obsidian-wiki-image {
+  max-width: 100%;
+  height: auto;
+}

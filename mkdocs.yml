@@ -87,6 +87,10 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - zensical_hardbreak
+  - zensical_obsidian:
+      docs_dir: docs
+      base_url: /
+      strict: false
 
 nav:
   - Home:
@@ -100,6 +104,9 @@ nav:
       - reading/夏目漱石/index.md
       - reading/夏目漱石/《哥儿》.md
       - 《我是猫》: reading/夏目漱石/《我是猫》.md
+    - 福尔摩斯:
+      - reading/福尔摩斯/index.md
+      - reading/福尔摩斯/紫藤别墅.md
 
   
 # extra部分
@@ -114,5 +121,6 @@ extra:
 extra_css:
   - css/dark_modified.css
   - css/font_modified.css
+  - css/obsidian_wiki.css
 
 
