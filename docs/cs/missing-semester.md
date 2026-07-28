@@ -7,7 +7,8 @@ regular expression is more complicated
 
 ### 常用
 sed用来查找替换(内置了自己的编程语言)
-grep用来找内容（not recursively default)；find用来找文件(recursively default)
+grep用来找内容（not recursively default)；
+find用来找文件(recursively default)
 chmod用来更改权限
 
 control+c to cancel

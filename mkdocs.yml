@@ -5,11 +5,12 @@ site_author: amarantosy
 site_description: amarantosy的外置大脑
 
 # repo
-repo_name: amarantosyy/notebook
+repo_name: amarantosy1/notebook
 repo_url: https://github.com/Amarantosy1/empirical-paper-workflow
 
 # copyright
 copyright: Copyright &copy; 2026 amarantosy
+
 
 # configuration
 theme:
@@ -24,6 +25,7 @@ theme:
     - navigation.tabs
     - navigation.expand
     - navigation.footer
+    - content.code.copy
     - search.highlight
     - toc.follow
 
@@ -42,8 +44,6 @@ theme:
 plugins:
   - search
   - meta
-  - document-dates
-
 
 
 
@@ -86,6 +86,7 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - hardbreak_ext
 
 nav:
   - Home:
@@ -98,6 +99,7 @@ nav:
     - 夏目漱石:
       - reading/夏目漱石/index.md
       - reading/夏目漱石/《哥儿》.md
+      - 《我是猫》: reading/夏目漱石/《我是猫》.md
 
   
 # extra部分
@@ -107,3 +109,10 @@ extra:
       link: https://github.com/Amarantosy1
     - icon: fontawesome/regular/envelope
       link: mailto:<amarantosy@icloud.com>
+
+# 主题配置
+extra_css:
+  - css/dark_modified.css
+  - css/font_modified.css
+
+
