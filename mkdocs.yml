@@ -1,0 +1,109 @@
+# Projet information
+site_name: amarantosy的外置大脑
+site_url: https://amarantosy.com
+site_author: amarantosy
+site_description: amarantosy的外置大脑
+
+# repo
+repo_name: amarantosyy/notebook
+repo_url: https://github.com/Amarantosy1/empirical-paper-workflow
+
+# copyright
+copyright: Copyright &copy; 2026 amarantosy
+
+# configuration
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+
+
+  features:
+    - navigation.indexes
+    - navigation.top
+    - navigation.tabs
+    - navigation.expand
+    - navigation.footer
+    - search.highlight
+    - toc.follow
+
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+      
+
+plugins:
+  - search
+  - meta
+  - document-dates
+
+
+
+
+# extentions
+markdown_extensions: 
+  - admonition
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format 
+  - pymdownx.arithmatex: 
+      generic: true
+  - toc:
+      toc_depth: 1-6
+      permalink: true 
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      auto_title: true 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home:
+    - index.md
+  - Computer Science:
+    - cs/index.md
+    - missing-semester: cs/missing-semester.md
+  - Reading:
+    - reading/index.md
+    - 夏目漱石:
+      - reading/夏目漱石/index.md
+      - reading/夏目漱石/《哥儿》.md
+
+  
+# extra部分
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Amarantosy1
+    - icon: fontawesome/regular/envelope
+      link: mailto:<amarantosy@icloud.com>
