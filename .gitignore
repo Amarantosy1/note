@@ -1,2 +1,6 @@
 __pycache__/
 *.egg-info/
+/.claude
+/.cache
+.DS_Store
+/site
