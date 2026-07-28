@@ -1,0 +1,360 @@
+<svg viewBox="0 0 900 3200" xmlns="http://www.w3.org/2000/svg" font-family="'Georgia', 'Songti SC', 'STSong', serif">
+  <rect width="900" height="3200" fill="#FAF8F4"/>
+
+  <!-- Title -->
+  <text x="450" y="52" text-anchor="middle" font-size="22" font-weight="bold" fill="#2C1A0E" letter-spacing="2">福尔摩斯探案集 · 60故事时间轴</text>
+  <text x="450" y="74" text-anchor="middle" font-size="12" fill="#8B6F4E" letter-spacing="1">按案发年份排列 · The Complete Sherlock Holmes Canon</text>
+  <line x1="80" y1="84" x2="820" y2="84" stroke="#C8A97A" stroke-width="0.8"/>
+
+  <!-- Legend -->
+  <rect x="80" y="96" width="12" height="12" rx="2" fill="#185FA5"/>
+  <text x="96" y="107" font-size="11" fill="#4A3728">长篇小说</text>
+  <rect x="170" y="96" width="12" height="12" rx="2" fill="#0F6E56"/>
+  <text x="186" y="107" font-size="11" fill="#4A3728">冒险史</text>
+  <rect x="240" y="96" width="12" height="12" rx="2" fill="#3C3489"/>
+  <text x="256" y="107" font-size="11" fill="#4A3728">回忆录</text>
+  <rect x="316" y="96" width="12" height="12" rx="2" fill="#993C1D"/>
+  <text x="332" y="107" font-size="11" fill="#4A3728">归来记</text>
+  <rect x="386" y="96" width="12" height="12" rx="2" fill="#854F0B"/>
+  <text x="402" y="107" font-size="11" fill="#4A3728">最后致意</text>
+  <rect x="476" y="96" width="12" height="12" rx="2" fill="#3B6D11"/>
+  <text x="492" y="107" font-size="11" fill="#4A3728">案件簿</text>
+
+  <!-- Spine line -->
+  <line x1="130" y1="120" x2="130" y2="3160" stroke="#C8A97A" stroke-width="1.2"/>
+
+  <!-- 1870s -->
+  <rect x="80" y="122" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="137" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">1870s</text>
+
+  <!-- story rows: x=130 for dot, text at 155 -->
+  <!-- 1874 血字的研究 novel -->
+  <circle cx="130" cy="160" r="6" fill="#185FA5"/>
+  <text x="148" y="155" font-size="11" font-weight="bold" fill="#2C1A0E">1874</text>
+  <text x="200" y="155" font-size="12" fill="#2C1A0E">血字的研究</text>
+  <text x="200" y="168" font-size="10" fill="#8B6F4E" font-style="italic">A Study in Scarlet　·　长篇 · 福尔摩斯与华生初次相识，杰弗逊·霍普的复仇案</text>
+
+  <!-- 1878 四签名 novel -->
+  <circle cx="130" cy="192" r="6" fill="#185FA5"/>
+  <text x="148" y="187" font-size="11" font-weight="bold" fill="#2C1A0E">1878</text>
+  <text x="200" y="187" font-size="12" fill="#2C1A0E">四签名</text>
+  <text x="200" y="200" font-size="10" fill="#8B6F4E" font-style="italic">The Sign of the Four　·　长篇 · 阿格拉宝藏与安达曼岛之谜</text>
+
+  <!-- 1880s -->
+  <rect x="80" y="218" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="233" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">1880s</text>
+
+  <circle cx="130" cy="256" r="5" fill="#0F6E56"/>
+  <text x="148" y="251" font-size="11" font-weight="bold" fill="#2C1A0E">1883</text>
+  <text x="200" y="251" font-size="12" fill="#2C1A0E">斑点带子案</text>
+  <text x="200" y="264" font-size="10" fill="#8B6F4E" font-style="italic">The Speckled Band　·　冒险史 · 继父以毒蛇谋杀继女，夜宿庄园破案</text>
+
+  <circle cx="130" cy="288" r="5" fill="#0F6E56"/>
+  <text x="148" y="283" font-size="11" font-weight="bold" fill="#2C1A0E">1883</text>
+  <text x="200" y="283" font-size="12" fill="#2C1A0E">工程师大拇指案</text>
+  <text x="200" y="296" font-size="10" fill="#8B6F4E" font-style="italic">The Engineer's Thumb　·　冒险史 · 伪钞集团砍去工程师拇指</text>
+
+  <circle cx="130" cy="320" r="5" fill="#0F6E56"/>
+  <text x="148" y="315" font-size="11" font-weight="bold" fill="#2C1A0E">1884</text>
+  <text x="200" y="315" font-size="12" fill="#2C1A0E">博斯科姆比溪谷之谜</text>
+  <text x="200" y="328" font-size="10" fill="#8B6F4E" font-style="italic">The Boscombe Valley Mystery　·　冒险史 · 殖民地往事引发的父子命案</text>
+
+  <circle cx="130" cy="352" r="5" fill="#3C3489"/>
+  <text x="148" y="347" font-size="11" font-weight="bold" fill="#2C1A0E">1886</text>
+  <text x="200" y="347" font-size="12" fill="#2C1A0E">赖盖特之谜</text>
+  <text x="200" y="360" font-size="10" fill="#8B6F4E" font-style="italic">The Reigate Squire　·　回忆录 · 疗养期间破乡村谋杀，一张撕碎的字条是关键</text>
+
+  <circle cx="130" cy="384" r="5" fill="#0F6E56"/>
+  <text x="148" y="379" font-size="11" font-weight="bold" fill="#2C1A0E">1887</text>
+  <text x="200" y="379" font-size="12" fill="#2C1A0E">红发联盟</text>
+  <text x="200" y="392" font-size="10" fill="#8B6F4E" font-style="italic">The Red-Headed League　·　冒险史 · 红发典当商受雇，背后是银行劫案</text>
+
+  <circle cx="130" cy="416" r="5" fill="#0F6E56"/>
+  <text x="148" y="411" font-size="11" font-weight="bold" fill="#2C1A0E">1887</text>
+  <text x="200" y="411" font-size="12" fill="#2C1A0E">身份案</text>
+  <text x="200" y="424" font-size="10" fill="#8B6F4E" font-style="italic">A Case of Identity　·　冒险史 · 未婚夫在婚礼当天神秘失踪</text>
+
+  <circle cx="130" cy="448" r="5" fill="#0F6E56"/>
+  <text x="148" y="443" font-size="11" font-weight="bold" fill="#2C1A0E">1887</text>
+  <text x="200" y="443" font-size="12" fill="#2C1A0E">五个橘核</text>
+  <text x="200" y="456" font-size="10" fill="#8B6F4E" font-style="italic">The Five Orange Pips　·　冒险史 · 三K党以橘核警告，家族成员接连惨死</text>
+
+  <circle cx="130" cy="480" r="5" fill="#0F6E56"/>
+  <text x="148" y="475" font-size="11" font-weight="bold" fill="#2C1A0E">1887</text>
+  <text x="200" y="475" font-size="12" fill="#2C1A0E">蓝宝石案</text>
+  <text x="200" y="488" font-size="10" fill="#8B6F4E" font-style="italic">The Blue Carbuncle　·　冒险史 · 圣诞鹅腹中藏有失窃蓝宝石</text>
+
+  <circle cx="130" cy="512" r="5" fill="#3C3489"/>
+  <text x="148" y="507" font-size="11" font-weight="bold" fill="#2C1A0E">1887</text>
+  <text x="200" y="507" font-size="12" fill="#2C1A0E">海军协定</text>
+  <text x="200" y="520" font-size="10" fill="#8B6F4E" font-style="italic">The Naval Treaty　·　回忆录 · 外交机密文件被盗，背叛与嫉妒的根源</text>
+
+  <circle cx="130" cy="544" r="5" fill="#0F6E56"/>
+  <text x="148" y="539" font-size="11" font-weight="bold" fill="#2C1A0E">1888</text>
+  <text x="200" y="539" font-size="12" fill="#2C1A0E">波西米亚丑闻</text>
+  <text x="200" y="552" font-size="10" fill="#8B6F4E" font-style="italic">A Scandal in Bohemia　·　冒险史 · 艾琳·艾德勒令福尔摩斯折服的唯一女性</text>
+
+  <circle cx="130" cy="576" r="5" fill="#0F6E56"/>
+  <text x="148" y="571" font-size="11" font-weight="bold" fill="#2C1A0E">1888</text>
+  <text x="200" y="571" font-size="12" fill="#2C1A0E">铜山毛榉案</text>
+  <text x="200" y="584" font-size="10" fill="#8B6F4E" font-style="italic">The Copper Beeches　·　冒险史 · 家庭教师察觉庄园恐怖秘密</text>
+
+  <circle cx="130" cy="608" r="5" fill="#0F6E56"/>
+  <text x="148" y="603" font-size="11" font-weight="bold" fill="#2C1A0E">1888</text>
+  <text x="200" y="603" font-size="12" fill="#2C1A0E">扭曲的嘴唇</text>
+  <text x="200" y="616" font-size="10" fill="#8B6F4E" font-style="italic">The Man with the Twisted Lip　·　冒险史 · 乞丐身份掩藏体面绅士的双重人生</text>
+
+  <circle cx="130" cy="640" r="5" fill="#3C3489"/>
+  <text x="148" y="635" font-size="11" font-weight="bold" fill="#2C1A0E">1888</text>
+  <text x="200" y="635" font-size="12" fill="#2C1A0E" font-weight="bold">最后一案</text>
+  <text x="200" y="648" font-size="10" fill="#8B6F4E" font-style="italic">The Final Problem　·　回忆录 · 莱辛巴赫瀑布，与莫里亚蒂的生死对决</text>
+
+  <circle cx="130" cy="672" r="5" fill="#3C3489"/>
+  <text x="148" y="667" font-size="11" font-weight="bold" fill="#2C1A0E">1889</text>
+  <text x="200" y="667" font-size="12" fill="#2C1A0E">格兰其庄园</text>
+  <text x="200" y="680" font-size="10" fill="#8B6F4E" font-style="italic">The Gloria Scott　·　回忆录 · 福尔摩斯早年案例，一封密信引发的悲剧</text>
+
+  <circle cx="130" cy="704" r="5" fill="#3C3489"/>
+  <text x="148" y="699" font-size="11" font-weight="bold" fill="#2C1A0E">1889</text>
+  <text x="200" y="699" font-size="12" fill="#2C1A0E">穆斯格雷夫礼典</text>
+  <text x="200" y="712" font-size="10" fill="#8B6F4E" font-style="italic">The Musgrave Ritual　·　回忆录 · 古老礼典字谜指向英格兰王室珍宝</text>
+
+  <circle cx="130" cy="736" r="5" fill="#0F6E56"/>
+  <text x="148" y="731" font-size="11" font-weight="bold" fill="#2C1A0E">1889</text>
+  <text x="200" y="731" font-size="12" fill="#2C1A0E">驼背人</text>
+  <text x="200" y="744" font-size="10" fill="#8B6F4E" font-style="italic">The Crooked Man　·　回忆录 · 三十年前的背叛引发的复仇</text>
+
+  <circle cx="130" cy="768" r="5" fill="#0F6E56"/>
+  <text x="148" y="763" font-size="11" font-weight="bold" fill="#2C1A0E">1889</text>
+  <text x="200" y="763" font-size="12" fill="#2C1A0E">住院的病人</text>
+  <text x="200" y="776" font-size="10" fill="#8B6F4E" font-style="italic">The Resident Patient　·　回忆录 · 神秘资助者入住诊所，惊现被杀的"合伙人"</text>
+
+  <!-- 1890s -->
+  <rect x="80" y="790" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="805" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">1890s</text>
+
+  <circle cx="130" cy="828" r="5" fill="#3C3489"/>
+  <text x="148" y="823" font-size="11" font-weight="bold" fill="#2C1A0E">1890</text>
+  <text x="200" y="823" font-size="12" fill="#2C1A0E">希腊译员</text>
+  <text x="200" y="836" font-size="10" fill="#8B6F4E" font-style="italic">The Greek Interpreter　·　回忆录 · 迈克罗夫特首次登场，希腊人被迫担任译员</text>
+
+  <circle cx="130" cy="860" r="5" fill="#0F6E56"/>
+  <text x="148" y="855" font-size="11" font-weight="bold" fill="#2C1A0E">1890</text>
+  <text x="200" y="855" font-size="12" fill="#2C1A0E">绿玉皇冠案</text>
+  <text x="200" y="868" font-size="10" fill="#8B6F4E" font-style="italic">The Beryl Coronet　·　冒险史 · 银行家以皇冠作抵押，儿子被疑偷窃宝石</text>
+
+  <circle cx="130" cy="892" r="5" fill="#3C3489"/>
+  <text x="148" y="887" font-size="11" font-weight="bold" fill="#2C1A0E">1890</text>
+  <text x="200" y="887" font-size="12" fill="#2C1A0E">黄面人</text>
+  <text x="200" y="900" font-size="10" fill="#8B6F4E" font-style="italic">The Yellow Face　·　回忆录 · 福尔摩斯罕见误判，真相却是温情的</text>
+
+  <circle cx="130" cy="924" r="5" fill="#3C3489"/>
+  <text x="148" y="919" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="919" font-size="12" fill="#2C1A0E">纸板盒子案</text>
+  <text x="200" y="932" font-size="10" fill="#8B6F4E" font-style="italic">The Cardboard Box　·　回忆录 · 包裹送来两只人耳，嫉妒引发的双重谋杀</text>
+
+  <!-- Break annotation -->
+  <line x1="100" y1="952" x2="820" y2="952" stroke="#993C1D" stroke-width="0.6" stroke-dasharray="6,4"/>
+  <text x="450" y="966" text-anchor="middle" font-size="11" fill="#993C1D" font-style="italic">— 莱辛巴赫瀑布之后，福尔摩斯消失三年（1891–1894）—</text>
+
+  <circle cx="130" cy="988" r="6" fill="#993C1D"/>
+  <text x="148" y="983" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="983" font-size="12" font-weight="bold" fill="#993C1D">空屋探案</text>
+  <text x="200" y="996" font-size="10" fill="#8B6F4E" font-style="italic">The Empty House　·　归来记 · 福尔摩斯归来，揭破莫兰上校的狙杀阴谋</text>
+
+  <circle cx="130" cy="1020" r="5" fill="#993C1D"/>
+  <text x="148" y="1015" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1015" font-size="12" fill="#2C1A0E">诺伍德建筑师</text>
+  <text x="200" y="1028" font-size="10" fill="#8B6F4E" font-style="italic">The Norwood Builder　·　归来记 · 建筑师遇害，手指印成为关键证据</text>
+
+  <circle cx="130" cy="1052" r="5" fill="#993C1D"/>
+  <text x="148" y="1047" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1047" font-size="12" fill="#2C1A0E">黑彼得</text>
+  <text x="200" y="1060" font-size="10" fill="#8B6F4E" font-style="italic">Black Peter　·　归来记 · 船长被鱼叉钉死小屋，凶手藏于捕鲸往事</text>
+
+  <circle cx="130" cy="1084" r="5" fill="#993C1D"/>
+  <text x="148" y="1079" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1079" font-size="12" fill="#2C1A0E">六个拿破仑像</text>
+  <text x="200" y="1092" font-size="10" fill="#8B6F4E" font-style="italic">The Six Napoleons　·　归来记 · 砸毁石膏像的碎片中藏有玻利维亚珍珠</text>
+
+  <circle cx="130" cy="1116" r="5" fill="#993C1D"/>
+  <text x="148" y="1111" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1111" font-size="12" fill="#2C1A0E">修道院公学</text>
+  <text x="200" y="1124" font-size="10" fill="#8B6F4E" font-style="italic">The Priory School　·　归来记 · 公爵之子失踪，寄宿学校藏骇人秘密</text>
+
+  <circle cx="130" cy="1148" r="5" fill="#993C1D"/>
+  <text x="148" y="1143" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1143" font-size="12" fill="#2C1A0E">查尔斯·奥古斯都·米尔沃顿</text>
+  <text x="200" y="1156" font-size="10" fill="#8B6F4E" font-style="italic">Charles Augustus Milverton　·　归来记 · 敲诈大师被杀，福尔摩斯选择沉默</text>
+
+  <circle cx="130" cy="1180" r="5" fill="#993C1D"/>
+  <text x="148" y="1175" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1175" font-size="12" fill="#2C1A0E">孤身骑车人</text>
+  <text x="200" y="1188" font-size="10" fill="#8B6F4E" font-style="italic">The Solitary Cyclist　·　归来记 · 女教师被神秘骑手跟踪，遗产阴谋</text>
+
+  <circle cx="130" cy="1212" r="5" fill="#993C1D"/>
+  <text x="148" y="1207" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1207" font-size="12" fill="#2C1A0E">三个大学生</text>
+  <text x="200" y="1220" font-size="10" fill="#8B6F4E" font-style="italic">The Three Students　·　归来记 · 大学考题被窃，嫌疑集中在三名学生</text>
+
+  <circle cx="130" cy="1244" r="5" fill="#993C1D"/>
+  <text x="148" y="1239" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1239" font-size="12" fill="#2C1A0E">金边夹鼻眼镜</text>
+  <text x="200" y="1252" font-size="10" fill="#8B6F4E" font-style="italic">The Golden Pince-Nez　·　归来记 · 被杀秘书手中眼镜指向俄国革命者</text>
+
+  <circle cx="130" cy="1276" r="5" fill="#993C1D"/>
+  <text x="148" y="1271" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1271" font-size="12" fill="#2C1A0E">失踪的中后卫</text>
+  <text x="200" y="1284" font-size="10" fill="#8B6F4E" font-style="italic">The Missing Three-Quarter　·　归来记 · 橄榄球明星失踪，追查到秘密婚姻</text>
+
+  <circle cx="130" cy="1308" r="5" fill="#993C1D"/>
+  <text x="148" y="1303" font-size="11" font-weight="bold" fill="#2C1A0E">1895</text>
+  <text x="200" y="1303" font-size="12" fill="#2C1A0E">三破山庄</text>
+  <text x="200" y="1316" font-size="10" fill="#8B6F4E" font-style="italic">The Three Garridebs　·　案件簿 · 三个加里德布联合可获遗产，诈骗背后藏逃犯</text>
+
+  <circle cx="130" cy="1340" r="5" fill="#993C1D"/>
+  <text x="148" y="1335" font-size="11" font-weight="bold" fill="#2C1A0E">1896</text>
+  <text x="200" y="1335" font-size="12" fill="#2C1A0E">阿比纳格列庄园</text>
+  <text x="200" y="1348" font-size="10" fill="#8B6F4E" font-style="italic">The Abbey Grange　·　归来记 · 爵士被杀，妻子证词与证据不符，福尔摩斯自组陪审团</text>
+
+  <circle cx="130" cy="1372" r="5" fill="#993C1D"/>
+  <text x="148" y="1367" font-size="11" font-weight="bold" fill="#2C1A0E">1897</text>
+  <text x="200" y="1367" font-size="12" fill="#2C1A0E">彼得里奇庄园</text>
+  <text x="200" y="1380" font-size="10" fill="#8B6F4E" font-style="italic">Wisteria Lodge　·　最后致意 · 神秘主人消失，藏匿异国政治阴谋</text>
+
+  <circle cx="130" cy="1404" r="5" fill="#854F0B"/>
+  <text x="148" y="1399" font-size="11" font-weight="bold" fill="#2C1A0E">1897</text>
+  <text x="200" y="1399" font-size="12" fill="#2C1A0E">魔鬼之脚</text>
+  <text x="200" y="1412" font-size="10" fill="#8B6F4E" font-style="italic">The Devil's Foot　·　最后致意 · 一家人陷入疯狂，毒性极强的魔鬼脚根为凶器</text>
+
+  <circle cx="130" cy="1436" r="5" fill="#854F0B"/>
+  <text x="148" y="1431" font-size="11" font-weight="bold" fill="#2C1A0E">1898</text>
+  <text x="200" y="1431" font-size="12" fill="#2C1A0E">弗朗西斯·卡法克斯女士失踪</text>
+  <text x="200" y="1444" font-size="10" fill="#8B6F4E" font-style="italic">Lady Frances Carfax　·　最后致意 · 贵族女子欧洲旅行中失踪，棺材中的秘密</text>
+
+  <!-- 1900s -->
+  <rect x="80" y="1460" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="1475" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">1900s</text>
+
+  <circle cx="130" cy="1498" r="5" fill="#993C1D"/>
+  <text x="148" y="1493" font-size="11" font-weight="bold" fill="#2C1A0E">1900</text>
+  <text x="200" y="1493" font-size="12" fill="#2C1A0E">跳舞的人</text>
+  <text x="200" y="1506" font-size="10" fill="#8B6F4E" font-style="italic">The Dancing Men　·　归来记 · 跳舞小人密码是死亡威胁，福尔摩斯破译却未能阻止悲剧</text>
+
+  <circle cx="130" cy="1530" r="5" fill="#993C1D"/>
+  <text x="148" y="1525" font-size="11" font-weight="bold" fill="#2C1A0E">1900</text>
+  <text x="200" y="1525" font-size="12" fill="#2C1A0E">第二块血迹</text>
+  <text x="200" y="1538" font-size="10" fill="#8B6F4E" font-style="italic">The Second Stain　·　归来记 · 政治文件失窃，地毯下血迹揭开外交丑闻</text>
+
+  <circle cx="130" cy="1562" r="5" fill="#854F0B"/>
+  <text x="148" y="1557" font-size="11" font-weight="bold" fill="#2C1A0E">1900</text>
+  <text x="200" y="1557" font-size="12" fill="#2C1A0E">布鲁斯-帕廷顿计划</text>
+  <text x="200" y="1570" font-size="10" fill="#8B6F4E" font-style="italic">The Bruce-Partington Plans　·　最后致意 · 军事机密蓝图失窃，死尸现于地铁轨道</text>
+
+  <circle cx="130" cy="1594" r="6" fill="#185FA5"/>
+  <text x="148" y="1589" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1589" font-size="12" font-weight="bold" fill="#2C1A0E">巴斯克维尔猎犬</text>
+  <text x="200" y="1602" font-size="10" fill="#8B6F4E" font-style="italic">The Hound of the Baskervilles　·　长篇 · 西部荒原的猎犬诅咒，正典中最著名的长篇</text>
+
+  <circle cx="130" cy="1626" r="6" fill="#185FA5"/>
+  <text x="148" y="1621" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1621" font-size="12" font-weight="bold" fill="#2C1A0E">恐惧谷</text>
+  <text x="200" y="1634" font-size="10" fill="#8B6F4E" font-style="italic">The Valley of Fear　·　长篇 · 莫里亚蒂幕后操纵的庄园谋杀与美国帮派历史</text>
+
+  <circle cx="130" cy="1658" r="5" fill="#854F0B"/>
+  <text x="148" y="1653" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1653" font-size="12" fill="#2C1A0E">垂死侦探</text>
+  <text x="200" y="1666" font-size="10" fill="#8B6F4E" font-style="italic">The Dying Detective　·　最后致意 · 福尔摩斯伪装垂死诱骗凶手认罪，华生被蒙在鼓里</text>
+
+  <circle cx="130" cy="1690" r="5" fill="#3B6D11"/>
+  <text x="148" y="1685" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1685" font-size="12" fill="#2C1A0E">三角墙农场</text>
+  <text x="200" y="1698" font-size="10" fill="#8B6F4E" font-style="italic">The Three Gables　·　案件簿 · 老太太被劝说卖掉住所，美女背后的阴谋</text>
+
+  <circle cx="130" cy="1722" r="5" fill="#3B6D11"/>
+  <text x="148" y="1717" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1717" font-size="12" fill="#2C1A0E">托尔桥问题</text>
+  <text x="200" y="1730" font-size="10" fill="#8B6F4E" font-style="italic">The Problem of Thor Bridge　·　案件簿 · 悬挂手枪揭示自杀伪装的真相</text>
+
+  <circle cx="130" cy="1754" r="5" fill="#3B6D11"/>
+  <text x="148" y="1749" font-size="11" font-weight="bold" fill="#2C1A0E">1902</text>
+  <text x="200" y="1749" font-size="12" fill="#2C1A0E">肖斯科姆老庄园</text>
+  <text x="200" y="1762" font-size="10" fill="#8B6F4E" font-style="italic">Shoscombe Old Place　·　案件簿 · 赛马主人行为反常，地窖中的腐尸之谜</text>
+
+  <circle cx="130" cy="1786" r="5" fill="#3B6D11"/>
+  <text x="148" y="1781" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1781" font-size="12" fill="#2C1A0E">知名客户案</text>
+  <text x="200" y="1794" font-size="10" fill="#8B6F4E" font-style="italic">The Illustrious Client　·　案件簿 · 神秘委托人请阻危险婚事，对手是臭名昭著的男爵</text>
+
+  <circle cx="130" cy="1818" r="5" fill="#3B6D11"/>
+  <text x="148" y="1813" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1813" font-size="12" fill="#2C1A0E">面纱房客</text>
+  <text x="200" y="1826" font-size="10" fill="#8B6F4E" font-style="italic">The Veiled Lodger　·　案件簿 · 毁容女子临终道出丈夫之死与她的罪责</text>
+
+  <circle cx="130" cy="1850" r="5" fill="#3B6D11"/>
+  <text x="148" y="1845" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1845" font-size="12" fill="#2C1A0E">苏塞克斯的吸血鬼</text>
+  <text x="200" y="1858" font-size="10" fill="#8B6F4E" font-style="italic">The Sussex Vampire　·　案件簿 · 妻子被目击吸吮婴儿颈血，福尔摩斯以理性破"吸血鬼"</text>
+
+  <circle cx="130" cy="1882" r="5" fill="#3B6D11"/>
+  <text x="148" y="1877" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1877" font-size="12" fill="#2C1A0E">皮肤变色的士兵</text>
+  <text x="200" y="1890" font-size="10" fill="#8B6F4E" font-style="italic">The Blanched Soldier　·　案件簿 · 福尔摩斯亲自执笔，麻风病之谜</text>
+
+  <circle cx="130" cy="1914" r="5" fill="#3B6D11"/>
+  <text x="148" y="1909" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1909" font-size="12" fill="#2C1A0E">马扎兰宝石案</text>
+  <text x="200" y="1922" font-size="10" fill="#8B6F4E" font-style="italic">The Mazarin Stone　·　案件簿 · 价值无算的黄钻失踪，蜡像迷惑窃贼</text>
+
+  <circle cx="130" cy="1946" r="5" fill="#3B6D11"/>
+  <text x="148" y="1941" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1941" font-size="12" fill="#2C1A0E">退休的染料商</text>
+  <text x="200" y="1954" font-size="10" fill="#8B6F4E" font-style="italic">The Retired Colourman　·　案件簿 · 老染料商疑妻出轨，背后藏着一桩谋杀</text>
+
+  <circle cx="130" cy="1978" r="5" fill="#993C1D"/>
+  <text x="148" y="1973" font-size="11" font-weight="bold" fill="#2C1A0E">1903</text>
+  <text x="200" y="1973" font-size="12" fill="#2C1A0E">归来记·最终案（另记）</text>
+  <text x="200" y="1986" font-size="10" fill="#8B6F4E" font-style="italic">The Adventure of the Second Stain (variant)　·　归来记所收录的另一记录说法</text>
+
+  <!-- 1910s -->
+  <rect x="80" y="2002" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="2017" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">1910s</text>
+
+  <circle cx="130" cy="2040" r="5" fill="#3B6D11"/>
+  <text x="148" y="2035" font-size="11" font-weight="bold" fill="#2C1A0E">1907</text>
+  <text x="200" y="2035" font-size="12" fill="#2C1A0E">狮鬃毛</text>
+  <text x="200" y="2048" font-size="10" fill="#8B6F4E" font-style="italic">The Lion's Mane　·　案件簿 · 退休后的福尔摩斯在海边调查泳者的离奇死亡</text>
+
+  <circle cx="130" cy="2072" r="6" fill="#854F0B"/>
+  <text x="148" y="2067" font-size="11" font-weight="bold" fill="#993C1D">1914</text>
+  <text x="200" y="2067" font-size="12" font-weight="bold" fill="#993C1D">最后致意</text>
+  <text x="200" y="2080" font-size="10" fill="#8B6F4E" font-style="italic">His Last Bow　·　1914年8月2日，福尔摩斯将德国间谍一网打尽，一战前夜的谢幕</text>
+
+  <!-- End line -->
+  <line x1="80" y1="2104" x2="820" y2="2104" stroke="#C8A97A" stroke-width="0.8"/>
+  <text x="450" y="2122" text-anchor="middle" font-size="11" fill="#8B6F4E" font-style="italic">共 60 个故事 · 1874–1914 · Arthur Conan Doyle</text>
+
+  <!-- Supplemental stories note -->
+  <rect x="80" y="2140" width="740" height="22" rx="3" fill="#EDE0CE"/>
+  <text x="90" y="2155" font-size="12" font-weight="bold" fill="#6B4226" letter-spacing="3">补录 · 时间存争议的故事</text>
+
+  <circle cx="130" cy="2182" r="5" fill="#0F6E56"/>
+  <text x="148" y="2185" font-size="11" fill="#2C1A0E">约1883</text>
+  <text x="210" y="2185" font-size="12" fill="#2C1A0E">绿宝石王冠　The Beryl Coronet（部分考证为1890）</text>
+
+  <circle cx="130" cy="2210" r="5" fill="#993C1D"/>
+  <text x="148" y="2213" font-size="11" fill="#2C1A0E">约1895</text>
+  <text x="210" y="2213" font-size="12" fill="#2C1A0E">海军上将案　Thor Bridge（部分考证为1900–1902）</text>
+
+  <circle cx="130" cy="2238" r="5" fill="#854F0B"/>
+  <text x="148" y="2241" font-size="11" fill="#2C1A0E">约1897</text>
+  <text x="210" y="2241" font-size="12" fill="#2C1A0E">克拉德克斯克夫人　Lady Frances Carfax（部分考证为1902）</text>
+
+  <circle cx="130" cy="2266" r="5" fill="#3B6D11"/>
+  <text x="148" y="2269" font-size="11" fill="#2C1A0E">约1902</text>
+  <text x="210" y="2269" font-size="12" fill="#2C1A0E">克里奇顿男爵夫人案　The Illustrious Client（部分考证为1903）</text>
+
+  <line x1="80" y1="2294" x2="820" y2="2294" stroke="#C8A97A" stroke-width="0.5"/>
+  <text x="450" y="2312" text-anchor="middle" font-size="10" fill="#A08060">注：案发时间依据 Baring-Gould《福尔摩斯传》等主流考证，各家说法存在出入属正常现象</text>
+
+</svg>

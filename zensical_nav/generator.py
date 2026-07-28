@@ -102,7 +102,8 @@ def _page_entry(path: Path, docs_dir: Path, manual_paths: set[str]) -> dict[str,
     relative = path.relative_to(docs_dir).as_posix()
     if relative in manual_paths:
         return None
-    return {page_title(path): relative}
+    title = page_title(path) if path.stem.casefold() == "index" else path.stem
+    return {title: relative}
 
 
 def _manual_page_paths(nav: Sequence[Any]) -> set[str]:
