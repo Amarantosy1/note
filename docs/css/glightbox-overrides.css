@@ -1,0 +1,62 @@
+.md-typeset a.glightbox {
+  display: inline-block;
+  max-width: 100%;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
+.md-typeset a.glightbox:has(.obsidian-wiki-image--centered) {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.md-typeset a.glightbox:focus-visible {
+  border-radius: var(--obsidian-image-border-radius, 0.2rem);
+  outline: 0.15rem solid var(--md-accent-fg-color);
+  outline-offset: 0.2rem;
+}
+
+html.glightbox-open {
+  height: 100%;
+  overflow: initial;
+}
+
+.gscrollbar-fixer {
+  padding-right: 15px;
+}
+
+.gslide-title {
+  margin-top: 0;
+  user-select: text;
+}
+
+.gslide-desc {
+  color: #666;
+  user-select: text;
+}
+
+.gdesc-inner {
+  font-size: 0.75rem;
+}
+
+.gslide-image img {
+  background: var(--md-default-bg-color, white);
+}
+
+body[data-md-color-scheme="slate"] .gdesc-inner {
+  background: var(--md-default-bg-color);
+}
+
+body[data-md-color-scheme="slate"] .gslide-title,
+body[data-md-color-scheme="slate"] .gslide-desc {
+  color: var(--md-default-fg-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glightbox-container,
+  .glightbox-container * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

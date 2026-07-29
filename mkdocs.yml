@@ -104,6 +104,14 @@ markdown_extensions:
       image_max_height: 600
       image_center: true
       image_border_radius: 0.5rem
+  - zensical_glightbox:
+      touch_navigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      zoomable: true
+      draggable: true
+      skip_classes: []
 
 zensical_nav:
   recursive: true
@@ -154,9 +162,13 @@ extra_css:
   - css/font_modified.css
   - css/obsidian_wiki.css
   - css/document_dates.css
+  - vendor/glightbox/glightbox.min.css
+  - css/glightbox-overrides.css
   - https://cn-font.claude-code-best.win/packages/hwmct/dist/%E6%B1%87%E6%96%87%E6%98%8E%E6%9C%9D%E4%BD%93/result.css
   - css/home.css
 
 # js
 extra_javascript:
+  - vendor/glightbox/glightbox.min.js
+  - js/glightbox-init.js
   - js/home-terminal.js
