@@ -11,7 +11,6 @@
   --home-ink: var(--md-default-fg-color);
   --home-muted: var(--md-default-fg-color--light);
   --home-line: #111111;
-  --home-note: var(--home-line);
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -24,25 +23,12 @@
   outline: none;
 }
 
-.home-hero::before {
-  position: absolute;
-  right: 7%;
-  bottom: 4%;
-  z-index: -1;
-  width: clamp(12rem, 28vw, 27rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--md-accent-fg-color) 7%, transparent);
-  content: "";
-  filter: blur(1px);
-}
-
 .home-hero__copy {
   position: relative;
   z-index: 7;
-  align-self: end;
+  align-self: center;
   max-width: min(46rem, 52%);
-  padding-bottom: clamp(0.5rem, 2vw, 1.75rem);
+  padding-bottom: 0;
 }
 
 .home-hero__copy h1 {
@@ -97,215 +83,180 @@
 
 .home-hero__art {
   position: absolute;
-  right: -11rem;
-  bottom: clamp(-7rem, -5vw, -3rem);
+  top: 50%;
+  right: clamp(-13rem, -9vw, -7rem);
   z-index: 8;
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
-  width: auto;
+  width: clamp(35rem, 52vw, 52rem);
   pointer-events: none;
+  transform: translateY(-50%);
   user-select: none;
 }
 
-.home-guitar {
-  width: 49.6rem;
-  max-width: none;
-  flex: 0 0 auto;
-  height: auto;
-  overflow: visible;
-  color: var(--home-line);
-  pointer-events: none;
-  filter: drop-shadow(0 1.2rem 1.8rem color-mix(in srgb, var(--home-ink) 8%, transparent));
+.home-terminal {
+  --terminal-bg: #0d0f12;
+  --terminal-bar: #13161b;
+  --terminal-border: #3f444d;
+  --terminal-text: #f1f3f5;
+  --terminal-muted: #8f96a3;
+  --terminal-accent: #7aa2ff;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--terminal-text);
+  background: var(--terminal-bg);
+  border: 1px solid var(--terminal-border);
+  border-radius: clamp(0.65rem, 1vw, 0.9rem);
+  box-shadow:
+    0 0.8rem 2.2rem color-mix(in srgb, var(--home-ink) 8%, transparent),
+    inset 0 1px color-mix(in srgb, white 4%, transparent);
 }
 
-.home-guitar__hitbox {
-  position: absolute;
-  right: 20rem;
-  bottom: 8rem;
-  z-index: 1;
-  width: 25rem;
-  height: 25rem;
+.home-terminal__bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 2.7rem;
+  padding: 0 1rem;
+  color: var(--terminal-muted);
+  background: var(--terminal-bar);
+  border-bottom: 1px solid color-mix(in srgb, var(--terminal-border) 72%, transparent);
+  font: 500 0.75rem/1 ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.home-terminal__controls {
+  display: flex;
+  grid-column: 1;
+  gap: 0.55rem;
+  justify-self: start;
+}
+
+.home-terminal__controls span {
+  width: 0.72rem;
+  aspect-ratio: 1;
   border-radius: 50%;
-  pointer-events: auto;
+  background: #ff5f57;
+  box-shadow: inset 0 -1px 1px rgb(0 0 0 / 20%);
 }
 
-.home-guitar path,
-.home-guitar circle,
-.home-guitar ellipse,
-.home-guitar rect {
-  vector-effect: non-scaling-stroke;
+.home-terminal__controls span:nth-child(2) {
+  background: #febc2e;
 }
 
-.home-guitar__instrument,
-.home-guitar__notes {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.home-terminal__controls span:nth-child(3) {
+  background: #28c840;
 }
 
-.home-guitar__body {
-  fill: color-mix(in srgb, var(--md-default-bg-color) 92%, var(--md-primary-fg-color));
-  stroke-width: 4;
+.home-terminal__title {
+  grid-column: 2;
+  letter-spacing: 0.015em;
 }
 
-.home-guitar__sound-hole {
-  fill: color-mix(in srgb, var(--home-ink) 12%, transparent);
-  stroke-width: 3.5;
+.home-terminal__screen {
+  box-sizing: border-box;
+  min-height: clamp(15.5rem, 25vw, 22rem);
+  padding: clamp(1.2rem, 2.4vw, 2rem);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 32%, rgb(70 111 203 / 4%), transparent 32%),
+    var(--terminal-bg);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-variant-ligatures: none;
 }
 
-.home-guitar__sound-ring {
-  opacity: 0.48;
-  stroke-width: 1.5;
+.home-terminal__command,
+.home-terminal__ready {
+  display: block;
+  color: var(--terminal-muted);
+  font-size: clamp(0.72rem, 0.86vw, 0.92rem);
+  line-height: 1.5;
+  white-space: pre;
 }
 
-.home-guitar__fretboard,
-.home-guitar__head {
-  fill: color-mix(in srgb, var(--md-default-bg-color) 86%, var(--md-primary-fg-color));
-  stroke-width: 3.5;
+.home-terminal__command::before {
+  margin-right: 0.7em;
+  color: var(--terminal-accent);
+  content: attr(data-ty-prompt);
 }
 
-.home-guitar__pickguard {
-  fill: color-mix(in srgb, var(--home-line) 10%, transparent);
-  opacity: 0.72;
-  stroke-width: 1.5;
+.home-terminal__command[data-ty-cursor]::after {
+  margin-left: 0.18em;
+  color: var(--terminal-text);
+  content: attr(data-ty-cursor);
 }
 
-.home-guitar__bridge {
-  fill: color-mix(in srgb, var(--home-line) 8%, transparent);
-  stroke-width: 3;
+.home-terminal__logo {
+  display: block;
+  width: max-content;
+  max-width: none;
+  margin: clamp(1.25rem, 2.5vw, 2.2rem) 0 clamp(1rem, 2vw, 1.6rem);
+  padding: 0;
+  overflow: visible;
+  color: transparent;
+  background: linear-gradient(
+    180deg,
+    #777e89 0%,
+    #aeb4bd 24%,
+    #f4f6f8 48%,
+    #c9ced5 70%,
+    #747b86 100%
+  );
+  background-clip: text;
+  border: 0;
+  font: 700 clamp(0.8rem, 0.94vw, 1rem)/0.7 ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  letter-spacing: -0.26em;
+  white-space: pre;
+  -webkit-background-clip: text;
+  text-shadow: none;
+  transform: scaleX(1.2);
+  transform-origin: left center;
 }
 
-.home-guitar__saddle,
-.home-guitar__nut {
-  stroke-width: 2.2;
+.home-terminal__logo span {
+  display: block;
+  min-height: 0.86em;
 }
 
-.home-guitar__bridge-pins circle {
-  fill: var(--md-default-bg-color);
-  stroke-width: 1.5;
+.home-terminal__ready {
+  color: #78d89b;
 }
 
-.home-guitar__frets {
-  opacity: 0.55;
-  stroke-width: 1.5;
+.home-terminal[data-terminal-state="running"] .home-terminal__ready {
+  visibility: hidden;
 }
 
-.home-guitar__strings {
-  opacity: 0.85;
-  stroke-width: 1.15;
+.home-terminal__cursor {
+  display: inline-block;
+  margin-left: 0.2em;
+  color: var(--terminal-text);
 }
 
-.home-guitar__strings path {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(1),
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(4) {
-  animation: home-string-pluck 560ms ease-out both;
-}
-
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(2),
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(5) {
-  animation: home-string-pluck 620ms 45ms ease-out both;
-}
-
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(3),
-.home-guitar__hitbox:hover + .home-guitar .home-guitar__strings path:nth-child(6) {
-  animation: home-string-pluck 680ms 90ms ease-out both;
-}
-
-.home-guitar__tuners circle,
-.home-guitar__tuner-key {
-  fill: var(--md-default-bg-color);
-  stroke-width: 1.8;
-}
-
-.home-note {
-  color: var(--home-note);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: home-note-rise 5.4s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 4px color-mix(in srgb, var(--home-note) 95%, transparent))
-    drop-shadow(0 0 12px color-mix(in srgb, var(--home-note) 62%, transparent))
-    drop-shadow(0 0 24px color-mix(in srgb, var(--home-note) 32%, transparent));
-}
-
-.home-note ellipse {
-  fill: currentColor;
-  stroke: none;
-}
-
-.home-note--one {
-  animation-delay: -0.4s;
-}
-
-.home-note--two {
-  animation-delay: -2.1s;
-}
-
-.home-note--three {
-  animation-delay: -3.8s;
+.home-terminal[data-terminal-initialized="true"][data-terminal-state="complete"] .home-terminal__cursor {
+  animation: home-terminal-cursor 1s steps(1, end) infinite;
 }
 
 [data-md-color-scheme="slate"] .home-hero {
   --home-line: #ffffff;
-  --home-note: var(--home-line);
 }
 
-@keyframes home-note-rise {
-  0%,
-  12% {
+@keyframes home-terminal-cursor {
+  50% {
     opacity: 0;
-    transform: translate(0, 1rem) rotate(-4deg) scale(0.72);
-  }
-
-  28% {
-    opacity: 0.9;
-  }
-
-  70% {
-    opacity: 0.72;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-1.2rem, -3.7rem) rotate(8deg) scale(1.04);
-  }
-}
-
-@keyframes home-string-pluck {
-  0%,
-  100% {
-    opacity: 0.85;
-    transform: translateX(0);
-  }
-
-  18% {
-    opacity: 1;
-    transform: translateX(2.4px);
-  }
-
-  38% {
-    transform: translateX(-1.8px);
-  }
-
-  58% {
-    transform: translateX(1.1px);
-  }
-
-  76% {
-    transform: translateX(-0.5px);
   }
 }
 
 @media screen and (max-width: 76.2344em) {
   .md-content--home .home-hero {
     min-height: max(30rem, calc(100svh - 10rem));
+  }
+
+  .home-hero__art {
+    right: -7rem;
+    width: min(50rem, 57vw);
   }
 }
 
@@ -341,30 +292,34 @@
   .home-hero__art {
     position: static;
     grid-row: 1;
+    align-self: center;
     justify-content: center;
     width: 100%;
     min-height: 0;
+    transform: none;
   }
 
-  .home-guitar {
-    width: min(83vw, 23rem);
-    max-width: 100%;
-    max-height: 48svh;
+  .home-terminal__bar {
+    min-height: 2.3rem;
+    padding: 0 0.8rem;
   }
 
-  .home-guitar__hitbox {
-    right: 12%;
-    bottom: 8%;
-    width: 64%;
-    height: 64%;
+  .home-terminal__controls {
+    gap: 0.42rem;
   }
 
-  .home-hero::before {
-    right: 50%;
-    bottom: auto;
-    top: 4%;
-    width: min(70vw, 21rem);
-    transform: translateX(50%);
+  .home-terminal__controls span {
+    width: 0.58rem;
+  }
+
+  .home-terminal__screen {
+    min-height: clamp(12rem, 45vw, 16rem);
+    padding: clamp(0.85rem, 3.2vw, 1.3rem);
+  }
+
+  .home-terminal__logo {
+    margin-block: clamp(0.9rem, 3.5vw, 1.35rem);
+    font-size: clamp(0.37rem, 1.5vw, 0.48rem);
   }
 }
 
@@ -373,14 +328,18 @@
     font-size: 0.95rem;
   }
 
-  .home-guitar {
-    width: min(88vw, 20rem);
+  .home-terminal__title {
+    font-size: 0.68rem;
+  }
+
+  .home-terminal__command,
+  .home-terminal__ready {
+    font-size: 0.66rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-note,
-  .home-guitar__strings path {
-    animation: none !important;
+  .home-terminal__cursor {
+    animation: none;
   }
 }

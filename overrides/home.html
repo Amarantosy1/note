@@ -15,79 +15,25 @@
       </div>
 
       <div class="home-hero__art" aria-hidden="true">
-        <span class="home-guitar__hitbox"></span>
-        <svg class="home-guitar" viewBox="0 0 520 440" role="presentation" focusable="false">
-          <g class="home-guitar__notes">
-            <g class="home-note home-note--one">
-              <ellipse cx="239" cy="169" rx="11" ry="8" transform="rotate(-18 239 169)" />
-              <path d="M248 166V111c18 3 29 12 31 26-10-7-20-9-31-7" />
-            </g>
-            <g class="home-note home-note--two">
-              <ellipse cx="309" cy="116" rx="10" ry="7" transform="rotate(-18 309 116)" />
-              <path d="M318 113V64" />
-            </g>
-            <g class="home-note home-note--three">
-              <ellipse cx="368" cy="158" rx="9" ry="7" transform="rotate(-18 368 158)" />
-              <path d="M376 155v-44c14 2 23 9 25 20-8-5-16-7-25-5" />
-            </g>
-          </g>
-
-          <g class="home-guitar__instrument" transform="rotate(40 245 250)">
-            <path class="home-guitar__body" d="M245 414c-59 0-96-32-95-83 1-30 19-53 51-63-16-17-20-36-13-56 8-24 29-37 57-37s49 13 57 37c7 20 3 39-13 56 32 10 50 33 51 63 1 51-36 83-95 83Z" />
-            <path class="home-guitar__fretboard" d="m226 207 8-115h22l8 115Z" />
-            <path class="home-guitar__head" d="m234 95-12-53c-3-14 7-25 23-25s26 11 23 25l-12 53Z" />
-
-            <circle class="home-guitar__sound-ring" cx="245" cy="286" r="38" />
-            <circle class="home-guitar__sound-hole" cx="245" cy="286" r="31" />
-            <path class="home-guitar__pickguard" d="M278 285c20 12 27 31 20 52-13-7-24-18-31-33 7-4 11-10 11-19Z" />
-
-            <g class="home-guitar__frets">
-              <path d="M233 111h24" />
-              <path d="M232 128h26" />
-              <path d="M231 145h28" />
-              <path d="M230 162h30" />
-              <path d="M229 179h32" />
-              <path d="M228 196h34" />
-            </g>
-            <path class="home-guitar__nut" d="M234 93h22" />
-
-            <path class="home-guitar__bridge" d="M204 340q41-14 82 0l-5 19q-36 11-72 0Z" />
-            <path class="home-guitar__saddle" d="M216 343q29-8 58 0" />
-            <g class="home-guitar__bridge-pins">
-              <circle cx="225" cy="351" r="2.3" />
-              <circle cx="233" cy="349" r="2.3" />
-              <circle cx="241" cy="348" r="2.3" />
-              <circle cx="249" cy="348" r="2.3" />
-              <circle cx="257" cy="349" r="2.3" />
-              <circle cx="265" cy="351" r="2.3" />
-            </g>
-
-            <g class="home-guitar__strings">
-              <path d="M225 351 237 93 229 73" />
-              <path d="M233 349 240 93 229 56" />
-              <path d="M241 348 243 93 229 39" />
-              <path d="M249 348 247 93 261 39" />
-              <path d="M257 349 250 93 261 56" />
-              <path d="M265 351 253 93 261 73" />
-            </g>
-
-            <g class="home-guitar__tuners">
-              <path d="M229 39h-14m14 17h-14m14 17h-14M261 39h14m-14 17h14m-14 17h14" />
-              <circle cx="229" cy="39" r="4" />
-              <circle cx="229" cy="56" r="4" />
-              <circle cx="229" cy="73" r="4" />
-              <circle cx="261" cy="39" r="4" />
-              <circle cx="261" cy="56" r="4" />
-              <circle cx="261" cy="73" r="4" />
-              <rect class="home-guitar__tuner-key" x="205" y="34" width="11" height="10" rx="3" />
-              <rect class="home-guitar__tuner-key" x="205" y="51" width="11" height="10" rx="3" />
-              <rect class="home-guitar__tuner-key" x="205" y="68" width="11" height="10" rx="3" />
-              <rect class="home-guitar__tuner-key" x="274" y="34" width="11" height="10" rx="3" />
-              <rect class="home-guitar__tuner-key" x="274" y="51" width="11" height="10" rx="3" />
-              <rect class="home-guitar__tuner-key" x="274" y="68" width="11" height="10" rx="3" />
-            </g>
-          </g>
-        </svg>
+        <div class="home-terminal" data-home-terminal>
+          <div class="home-terminal__bar">
+            <span class="home-terminal__controls">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="home-terminal__title">~/amarantosy</span>
+          </div>
+          <div class="home-terminal__screen">
+            <span class="home-terminal__command" data-ty="input" data-ty-prompt="~">render --name AMARANTOSY</span>
+            <pre class="home-terminal__logo" data-terminal-logo><span data-terminal-row> ███   █   █   ███   ████    ███   █   █  █████   ███    ████  █   █</span>
+<span data-terminal-row>█   █  ██ ██  █   █  █   █  █   █  ██  █    █    █   █  █      █   █</span>
+<span data-terminal-row>█   █  █ █ █  █   █  █   █  █   █  █ █ █    █    █   █  █       █ █ </span>
+<span data-terminal-row>█████  █ █ █  █████  ████   █████  █  ██    █    █   █   ███     █  </span>
+<span data-terminal-row>█   █  █   █  █   █  █ █    █   █  █   █    █    █   █      █    █  </span>
+<span data-terminal-row>█   █  █   █  █   █  █  █   █   █  █   █    █    █   █      █    █  </span>
+<span data-terminal-row>█   █  █   █  █   █  █   █  █   █  █   █    █     ███   ████     █  </span></pre>
+            <span class="home-terminal__ready" data-terminal-ready>ready <span class="home-terminal__cursor">█</span></span>
+          </div>
+        </div>
       </div>
     </section>
   </div>

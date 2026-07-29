@@ -126,5 +126,5 @@ extra_css:
   - css/home.css
 
 # js
-
-
+extra_javascript:
+  - js/home-terminal.js
