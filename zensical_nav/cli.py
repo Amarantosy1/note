@@ -62,7 +62,7 @@ def _build(config_path: Path, forwarded: list[str]) -> int:
     try:
         expand_config_file(config_path, generated)
         return subprocess.run(
-            ["zensical", "build", "-f", str(generated), *forwarded],
+            _zensical_command("build", generated, forwarded),
             check=False,
         ).returncode
     finally:
@@ -83,7 +83,7 @@ def _serve(config_path: Path, forwarded: list[str], interval: float) -> int:
     watcher.start()
     process: subprocess.Popen | None = None
     try:
-        process = subprocess.Popen(["zensical", "serve", "-f", str(generated), *forwarded])
+        process = subprocess.Popen(_zensical_command("serve", generated, forwarded))
         return process.wait()
     except KeyboardInterrupt:
         return 130
@@ -98,6 +98,10 @@ def _serve(config_path: Path, forwarded: list[str], interval: float) -> int:
                 process.kill()
                 process.wait()
         generated.unlink(missing_ok=True)
+
+
+def _zensical_command(command: str, config_path: Path, forwarded: list[str]) -> list[str]:
+    return [sys.executable, "-m", "zensical", command, "-f", str(config_path), *forwarded]
 
 
 def _watch_and_expand(source: Path, destination: Path, interval: float, stop: threading.Event) -> None:

@@ -5,19 +5,21 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "zensical-markdown-extensions"
 version = "0.3.0"
-description = "Markdown extensions for hard breaks and Obsidian wiki syntax in Zensical"
+description = "Markdown extensions for hard breaks, Obsidian wiki syntax, and document dates in Zensical"
 requires-python = ">=3.10"
 dependencies = [
     "Markdown>=3.5",
     "ruamel.yaml>=0.18",
+    "zensical>=0.0.51,<0.1",
 ]
 
 [project.scripts]
 zensical-nav = "zensical_nav.cli:main"
 
 [project.entry-points."markdown.extensions"]
+zensical_document_dates = "zensical_document_dates:DocumentDatesExtension"
 zensical_hardbreak = "zensical_hardbreak:HardBreakExtension"
 zensical_obsidian = "zensical_obsidian:ObsidianWikiExtension"
 
 [tool.setuptools]
-packages = ["zensical_hardbreak", "zensical_obsidian", "zensical_nav"]
+packages = ["zensical_document_dates", "zensical_hardbreak", "zensical_obsidian", "zensical_nav"]

@@ -10,7 +10,7 @@ pip install -e .
 
 ## 混合导航
 
-Zensical 当前尚未公开第三方插件 API，因此 `zensical-nav` 会先把自动导航占位符展开为标准 `nav`，再调用 Zensical。构建和预览时需要使用：
+Zensical 当前尚未公开第三方插件 API，因此 `zensical-nav` 会先把自动导航占位符展开为标准 `nav`，再调用 Zensical。它通过启动自身的 Python 解释器执行 `python -m zensical`，因此始终委派给同一个虚拟环境，不依赖 `PATH` 中的其他 `zensical` 命令。构建和预览时需要使用：
 
 ```bash
 zensical-nav build -f mkdocs.yml

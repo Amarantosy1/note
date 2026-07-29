@@ -5,7 +5,6 @@ __pycache__/
 .DS_Store
 /site
 uv.lock
-/tests
 .mkdocs*
 docs/.DS_Store
 docs/reading/.DS_Store
