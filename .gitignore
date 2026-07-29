@@ -7,3 +7,5 @@ __pycache__/
 uv.lock
 /tests
 .mkdocs*
+docs/.DS_Store
+docs/reading/.DS_Store

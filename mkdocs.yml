@@ -1,6 +1,6 @@
 # Projet information
 site_name: amarantosy的外置大脑
-site_url: https://amarantosy.com
+site_url: https://note.amarantosy.com
 site_author: amarantosy
 site_description: amarantosy的外置大脑
 
@@ -114,6 +114,8 @@ extra:
       link: https://github.com/Amarantosy1
     - icon: fontawesome/regular/envelope
       link: mailto:<amarantosy@icloud.com>
+    - icon: octicons/home-fill-24
+      link: https://amarantosy.com
 
 # 主题配置
 extra_css:
