@@ -7,6 +7,10 @@
   max-width: none;
 }
 
+html:has(.home-hero) {
+  scroll-behavior: smooth;
+}
+
 .md-content--home .home-hero {
   --home-ink: var(--md-default-fg-color);
   --home-muted: var(--md-default-fg-color--light);
@@ -16,11 +20,21 @@
   grid-template-columns: minmax(0, 1fr);
   align-items: end;
   width: 100%;
-  min-height: max(32rem, calc(100svh - 12rem));
+  min-height: calc(100svh - 6rem);
   padding: clamp(2.5rem, 7vw, 6.5rem) clamp(1.25rem, 4vw, 3.5rem);
   overflow: visible;
   color: var(--home-ink);
   outline: none;
+}
+
+.home-hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.4rem;
+  left: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--home-ink) 14%, transparent);
+  content: "";
 }
 
 .home-hero__copy {
@@ -40,6 +54,12 @@
   line-height: 0.98;
   letter-spacing: -0.055em;
   text-wrap: balance;
+}
+
+.home-title__line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
 }
 
 .home-hero__copy p {
@@ -85,13 +105,13 @@
   position: absolute;
   top: 50%;
   right: clamp(-13rem, -9vw, -7rem);
-  z-index: 8;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: clamp(35rem, 52vw, 52rem);
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translate(20%, -50%);
   user-select: none;
 }
 
@@ -239,8 +259,68 @@
   animation: home-terminal-cursor 1s steps(1, end) infinite;
 }
 
+.home-scroll-cue {
+  position: absolute;
+  bottom: clamp(1.25rem, 3vh, 2rem);
+  left: 50%;
+  z-index: 10;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  color: var(--home-muted);
+  transform: translateX(-50%);
+}
+
+.home-scroll-cue svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: currentColor;
+  animation: home-scroll-cue 1.8s ease-in-out infinite;
+}
+
+.home-scroll-cue:hover {
+  color: var(--home-ink);
+}
+
+.home-introduction {
+  width: min(100% - 2rem, 61rem);
+  min-height: min(32rem, 60svh);
+  margin: 0 auto;
+  padding: clamp(4rem, 10vw, 8rem) clamp(0rem, 2vw, 1.5rem) clamp(5rem, 12vw, 10rem);
+  color: var(--md-default-fg-color);
+  font-family: "Huiwen-mincho", "Songti SC", "STSong", serif;
+  font-size: clamp(1.35rem, 3.5vw, 3.3rem);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.home-introduction > :first-child {
+  margin-top: 0;
+}
+
+.home-introduction :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
 [data-md-color-scheme="slate"] .home-hero {
   --home-line: #ffffff;
+}
+
+@keyframes home-scroll-cue {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: translateY(-0.18rem);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0.22rem);
+  }
 }
 
 @keyframes home-terminal-cursor {
@@ -251,7 +331,7 @@
 
 @media screen and (max-width: 76.2344em) {
   .md-content--home .home-hero {
-    min-height: max(30rem, calc(100svh - 10rem));
+    min-height: calc(100svh - 4.8rem);
   }
 
   .home-hero__art {
@@ -265,7 +345,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: minmax(15rem, 1fr) auto;
     gap: 1.5rem;
-    min-height: max(34rem, calc(100svh - 9rem));
+    min-height: calc(100svh - 3rem);
     padding: 1.5rem 1rem 2.75rem;
   }
 
@@ -279,6 +359,10 @@
     max-width: 9em;
     font-size: clamp(2.45rem, 14vw, 4.5rem);
     line-height: 1.02;
+  }
+
+  .home-introduction {
+    font-size: clamp(1.225rem, 7vw, 2.25rem);
   }
 
   .home-brain {
@@ -339,6 +423,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html:has(.home-hero) {
+    scroll-behavior: auto;
+  }
+
+  .home-scroll-cue svg,
   .home-terminal__cursor {
     animation: none;
   }

@@ -4,13 +4,13 @@
   <div class="md-content md-content--home" data-md-component="content">
     <section id="__skip" class="home-hero" tabindex="-1" aria-labelledby="home-title">
       <div class="home-hero__copy">
-        <h1 id="home-title">不擅生长的<span class="home-brain-anchor">大脑<svg class="home-brain" viewBox="0 0 260 180" aria-hidden="true" focusable="false">
+        <h1 id="home-title"><span class="home-title__line">不擅生长</span><span class="home-title__line">的<span class="home-brain-anchor">大脑<svg class="home-brain" viewBox="0 0 260 180" aria-hidden="true" focusable="false">
           <path d="M130 29c-15-23-50-18-56 15-25 4-34 29-20 49-15 24 8 54 37 46 11 22 34 14 39-6 5 20 28 28 39 6 29 8 52-22 37-46 14-20 5-45-20-49-6-33-41-38-56-15Z" />
           <path d="M130 29v104" />
           <path d="M79 46c23 1 29 16 23 34-23-6-37 9-32 28M93 137c-9-18 1-34 19-35 14 0 18-14 18-25" />
           <path d="M181 46c-23 1-29 16-23 34 23-6 37 9 32 28M167 137c9-18-1-34-19-35-14 0-18-14-18-25" />
           <path d="M74 69c-10 0-18 5-23 13M186 69c10 0 18 5 23 13" />
-        </svg></span></h1>
+        </svg></span></span></h1>
         <p>{{ page.meta.home.subtitle }}</p>
       </div>
 
@@ -35,6 +35,14 @@
           </div>
         </div>
       </div>
+      <a class="home-scroll-cue" href="#home-introduction" aria-label="向下滚动查看介绍">
+        {% include ".icons/octicons/chevron-down-12.svg" %}
+      </a>
     </section>
+    {% if page.content | trim %}
+      <article id="home-introduction" class="home-introduction md-typeset">
+        {{ page.content }}
+      </article>
+    {% endif %}
   </div>
 {% endblock %}
