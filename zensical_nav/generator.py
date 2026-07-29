@@ -21,7 +21,8 @@ def expand_nav(config: Mapping[str, Any], config_dir: Path | str = ".") -> list[
 
     defaults = parse_defaults(config.get("zensical_nav"))
     manual_paths = _manual_page_paths(nav)
-    return _expand_items(nav, docs_dir, defaults, manual_paths, "nav")
+    auto_paths = _auto_paths(nav, defaults, "nav")
+    return _expand_items(nav, docs_dir, defaults, manual_paths, auto_paths, "nav")
 
 
 def _expand_items(
@@ -29,6 +30,7 @@ def _expand_items(
     docs_dir: Path,
     defaults: NavOptions,
     manual_paths: set[str],
+    auto_paths: set[PurePosixPath],
     location: str,
 ) -> list[Any]:
     expanded: list[Any] = []
@@ -36,13 +38,27 @@ def _expand_items(
         item_location = f"{location}[{index}]"
         if isinstance(item, Mapping) and set(item) == {"auto"}:
             relative_path, options = parse_auto(item["auto"], defaults, f"{item_location}.auto")
-            expanded.extend(_generate(relative_path, docs_dir, options, manual_paths, item_location))
+            owned_paths = {
+                path for path in auto_paths if path != relative_path and relative_path in path.parents
+            }
+            expanded.extend(
+                _generate(relative_path, docs_dir, options, manual_paths, owned_paths, item_location)
+            )
             continue
         if isinstance(item, Mapping) and len(item) == 1:
             title, value = next(iter(item.items()))
             if isinstance(value, list):
                 expanded.append(
-                    {title: _expand_items(value, docs_dir, defaults, manual_paths, f"{item_location}.{title}")}
+                    {
+                        title: _expand_items(
+                            value,
+                            docs_dir,
+                            defaults,
+                            manual_paths,
+                            auto_paths,
+                            f"{item_location}.{title}",
+                        )
+                    }
                 )
                 continue
         expanded.append(item)
@@ -54,11 +70,12 @@ def _generate(
     docs_dir: Path,
     options: NavOptions,
     manual_paths: set[str],
+    owned_paths: set[PurePosixPath],
     location: str,
 ) -> list[Any]:
     directory = resolve_auto_directory(docs_dir, relative_path, f"{location}.auto")
-    generated = _directory_items(directory, docs_dir, options, manual_paths)
-    if not generated and not options.allow_empty:
+    generated = _directory_items(directory, docs_dir, options, manual_paths, owned_paths)
+    if not generated and not options.allow_empty and not (options.recursive and owned_paths):
         raise NavConfigError(f"{location}.auto generated no pages; set allow_empty: true to permit this")
     return generated
 
@@ -68,6 +85,7 @@ def _directory_items(
     docs_dir: Path,
     options: NavOptions,
     manual_paths: set[str],
+    owned_paths: set[PurePosixPath],
 ) -> list[Any]:
     pages = sorted(
         (
@@ -92,7 +110,10 @@ def _directory_items(
             key=_sort_key,
         )
         for child in directories:
-            children = _directory_items(child, docs_dir, options, manual_paths)
+            child_relative = PurePosixPath(child.relative_to(docs_dir).as_posix())
+            if child_relative in owned_paths:
+                continue
+            children = _directory_items(child, docs_dir, options, manual_paths, owned_paths)
             if children:
                 result.append({child.name: children})
     return result
@@ -104,6 +125,29 @@ def _page_entry(path: Path, docs_dir: Path, manual_paths: set[str]) -> dict[str,
         return None
     title = page_title(path) if path.stem.casefold() == "index" else path.stem
     return {title: relative}
+
+
+def _auto_paths(
+    nav: Sequence[Any],
+    defaults: NavOptions,
+    location: str,
+) -> set[PurePosixPath]:
+    paths: set[PurePosixPath] = set()
+
+    def visit(items: Sequence[Any], current_location: str) -> None:
+        for index, item in enumerate(items):
+            item_location = f"{current_location}[{index}]"
+            if isinstance(item, Mapping) and set(item) == {"auto"}:
+                path, _ = parse_auto(item["auto"], defaults, f"{item_location}.auto")
+                paths.add(path)
+                continue
+            if isinstance(item, Mapping) and len(item) == 1:
+                title, value = next(iter(item.items()))
+                if isinstance(value, list):
+                    visit(value, f"{item_location}.{title}")
+
+    visit(nav, location)
+    return paths
 
 
 def _manual_page_paths(nav: Sequence[Any]) -> set[str]:

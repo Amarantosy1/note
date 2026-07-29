@@ -40,9 +40,11 @@ nav:
   - Reading:
     - reading/index.md
     - auto: reading
+    - 其它:
+      - auto: reading/其它
 ```
 
-`Home` 和 `Computer Science` 完全手动维护；`Reading` 保留手动固定的首页，其余文章和子目录从 `docs/reading` 自动生成。手动列出的 Markdown 页面不会被自动块重复添加。
+`Home` 和 `Computer Science` 完全手动维护；`Reading` 保留手动固定的首页，其余文章和子目录从 `docs/reading` 自动生成。手动列出的 Markdown 页面不会被自动块重复添加。当父级和子级 `auto` 路径重叠时，更具体的路径接管该子树：上例中的 `reading/其它` 只会出现在手动指定的“其它”分组中，不会同时出现在 `auto: reading` 的结果中。
 
 自动块也支持完整写法，并可覆盖全局默认值：
 

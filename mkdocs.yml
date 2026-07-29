@@ -120,6 +120,8 @@ nav:
   - Reading:
     - reading/index.md
     - auto: reading
+    - 其它:
+      - auto: reading/其它
   - Art:
     - art/index.md
     - auto: art
