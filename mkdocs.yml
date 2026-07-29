@@ -95,6 +95,7 @@ markdown_extensions:
 zensical_nav:
   recursive: true
   include_index: true
+  allow_empty: true
 
 nav:
   - Home:
@@ -102,9 +103,24 @@ nav:
   - Computer Science:
     - cs/index.md
     - auto: cs
+  - AI:
+    - ai/index.md
+    - auto: ai
+  - Social Science:
+    - ss/index.md
+    - auto: ss
   - Reading:
     - reading/index.md
     - auto: reading
+  - Art:
+    - art/index.md
+    - auto: art
+  - Media:
+    - media/index.md
+    - auto: media
+  - Tools: 
+    - tools/index.md
+    - auto: tools
 
   
 # extra部分
