@@ -26,19 +26,19 @@ class ObsidianWikiExtensionTest(unittest.TestCase):
         path.write_text(content, encoding="utf-8")
         return path
 
-    def render(self, source, strict=False):
+    def render(self, source, strict=False, **config):
+        extension_config = {
+            "docs_dir": str(self.docs),
+            "base_url": "/notes",
+            "strict": strict,
+        }
+        extension_config.update(config)
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             html = markdown(
                 source,
                 extensions=["fenced_code", "toc", "zensical_obsidian"],
-                extension_configs={
-                    "zensical_obsidian": {
-                        "docs_dir": str(self.docs),
-                        "base_url": "/notes",
-                        "strict": strict,
-                    }
-                },
+                extension_configs={"zensical_obsidian": extension_config},
             )
         return html, caught
 
@@ -64,8 +64,77 @@ class ObsidianWikiExtensionTest(unittest.TestCase):
 
     def test_resolves_image(self):
         html, caught = self.render("![[cover.webp]]")
-        self.assertIn('<img alt="cover.webp" class="obsidian-wiki-image" src="/notes/reading/', html)
+        self.assertIn(
+            '<img alt="cover.webp" class="obsidian-wiki-image obsidian-wiki-image--centered"',
+            html,
+        )
+        self.assertIn('src="/notes/reading/', html)
+        self.assertIn("--obsidian-image-max-width: 800px", html)
+        self.assertIn("--obsidian-image-max-height: 600px", html)
+        self.assertIn("--obsidian-image-border-radius: 0.5rem", html)
         self.assertEqual(caught, [])
+
+    def test_resolves_image_with_width_and_dimensions(self):
+        html, caught = self.render("![[cover.webp|300]] ![[cover.webp|320x200]]")
+        self.assertEqual(html.count('alt="cover.webp"'), 2)
+        self.assertIn("--obsidian-image-max-width: 300px", html)
+        self.assertIn("--obsidian-image-max-width: 320px", html)
+        self.assertIn("--obsidian-image-max-height: 200px", html)
+        self.assertEqual(html.count("--obsidian-image-max-height: 600px"), 1)
+        self.assertEqual(caught, [])
+
+    def test_applies_custom_image_defaults_and_can_disable_centering(self):
+        html, caught = self.render(
+            "![[cover.webp]]",
+            image_max_width=720,
+            image_max_height=480,
+            image_center=False,
+            image_border_radius="12px",
+        )
+        self.assertIn('class="obsidian-wiki-image"', html)
+        self.assertNotIn("obsidian-wiki-image--centered", html)
+        self.assertIn("--obsidian-image-max-width: 720px", html)
+        self.assertIn("--obsidian-image-max-height: 480px", html)
+        self.assertIn("--obsidian-image-border-radius: 12px", html)
+        self.assertEqual(caught, [])
+
+    def test_accepts_zero_image_border_radius(self):
+        html, caught = self.render("![[cover.webp]]", image_border_radius=0)
+        self.assertIn("--obsidian-image-border-radius: 0", html)
+        self.assertEqual(caught, [])
+
+    def test_marks_invalid_image_dimensions_unsupported(self):
+        invalid = [
+            "0",
+            "-1",
+            "300px",
+            "x200",
+            "300x",
+            "300x0",
+            "300x200x100",
+            "300|200",
+            "３００",
+            "9" * 5000,
+        ]
+        html, caught = self.render(" ".join(f"![[cover.webp|{size}]]" for size in invalid))
+        self.assertEqual(html.count("obsidian-wiki-link--unsupported"), len(invalid))
+        self.assertEqual(len(caught), len(invalid))
+
+    def test_invalid_image_dimensions_raise_in_strict_mode(self):
+        with self.assertRaisesRegex(ValueError, "target invalid"):
+            self.render("![[cover.webp|300px]]", strict=True)
+
+    def test_rejects_invalid_image_configuration(self):
+        invalid_configs = [
+            {"image_max_width": 0},
+            {"image_max_height": "600px"},
+            {"image_center": "center"},
+            {"image_border_radius": "calc(1rem + 1px)"},
+            {"image_border_radius": "-1px"},
+        ]
+        for config in invalid_configs:
+            with self.subTest(config=config), self.assertRaises(ValueError):
+                self.render("![[cover.webp]]", **config)
 
     def test_marks_missing_page_and_image(self):
         html, caught = self.render("[[不存在]] ![[missing.webp]]")

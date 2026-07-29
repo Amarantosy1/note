@@ -17,7 +17,7 @@ theme:
   name: material
   custom_dir: overrides
   language: zh
-
+  favicon: assets/empty.png
 
   features:
     - navigation.indexes
@@ -86,6 +86,7 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.blocks.caption
   - zensical_hardbreak
   - zensical_document_dates:
       docs_dir: docs
@@ -99,6 +100,10 @@ markdown_extensions:
       docs_dir: docs
       base_url: /
       strict: false
+      image_max_width: 800
+      image_max_height: 600
+      image_center: true
+      image_border_radius: 0.5rem
 
 zensical_nav:
   recursive: true

@@ -92,25 +92,49 @@ class ObsidianWikiLinkProcessor(ObsidianProcessor):
 
 
 class ObsidianImageProcessor(ObsidianProcessor):
-    def __init__(self, index: DocsIndex, strict: bool):
+    def __init__(
+        self,
+        index: DocsIndex,
+        strict: bool,
+        *,
+        max_width: int,
+        max_height: int,
+        center: bool,
+        border_radius: str,
+    ):
         super().__init__(IMAGE_PATTERN, index, strict)
+        self.max_width = max_width
+        self.max_height = max_height
+        self.center = center
+        self.border_radius = border_radius
 
     def handleMatch(self, match, data):
         if self._inside_html_tag(data, match.start(0)):
             return None, match.start(0), match.end(0)
         raw = match.group(1).strip()
-        label = f"Missing image: {raw}"
-        if "|" in raw or "#" in raw or "^" in raw:
+        target, dimensions = self._split_dimensions(raw)
+        label = f"Missing image: {target}"
+        if dimensions is None or "#" in target or "^" in target:
             element = self._unsupported(raw, f"Unsupported embed: {raw}", "image")
         else:
-            resolution = self.index.resolve_image(raw)
+            resolution = self.index.resolve_image(target)
             if resolution.status is ResolutionStatus.FOUND:
+                width, height = dimensions
+                classes = ["obsidian-wiki-image"]
+                if self.center:
+                    classes.append("obsidian-wiki-image--centered")
+                style = (
+                    f"--obsidian-image-max-width: {width or self.max_width}px; "
+                    f"--obsidian-image-max-height: {height or self.max_height}px; "
+                    f"--obsidian-image-border-radius: {self.border_radius};"
+                )
                 element = ElementTree.Element("img")
-                element.set("class", "obsidian-wiki-image")
+                element.set("class", " ".join(classes))
                 element.set("src", resolution.url)
-                element.set("alt", PureLabel.image(raw))
+                element.set("alt", PureLabel.image(target))
+                element.set("style", style)
             elif resolution.status is ResolutionStatus.INVALID and not re.search(
-                r"\.(?:png|jpe?g|gif|svg|webp|avif)$", raw, re.IGNORECASE
+                r"\.(?:png|jpe?g|gif|svg|webp|avif)$", target, re.IGNORECASE
             ):
                 element = self._unsupported(raw, f"Unsupported embed: {raw}", "image")
             else:
@@ -120,6 +144,24 @@ class ObsidianImageProcessor(ObsidianProcessor):
                     f"{element.get('class')} obsidian-wiki-link--image",
                 )
         return element, match.start(0), match.end(0)
+
+    @staticmethod
+    def _split_dimensions(raw: str) -> tuple[str, tuple[int | None, int | None] | None]:
+        target, separator, size = raw.partition("|")
+        target = target.strip()
+        if not separator:
+            return target, (None, None)
+        if "|" in size:
+            return target, None
+        match = re.fullmatch(r"([1-9][0-9]*)(?:[xX]([1-9][0-9]*))?", size.strip())
+        if match is None:
+            return target, None
+        try:
+            width = int(match.group(1))
+            height = int(match.group(2)) if match.group(2) else None
+        except ValueError:
+            return target, None
+        return target, (width, height)
 
 
 class PureLabel:

@@ -35,6 +35,15 @@
 }
 
 .obsidian-wiki-image {
-  max-width: 100%;
+  display: block;
+  width: auto;
+  max-width: min(100%, var(--obsidian-image-max-width, 800px));
   height: auto;
+  max-height: var(--obsidian-image-max-height, 600px);
+  border-radius: var(--obsidian-image-border-radius, 0.5rem);
+  object-fit: contain;
+}
+
+.obsidian-wiki-image--centered {
+  margin-inline: auto;
 }
