@@ -101,7 +101,7 @@ nav:
     - index.md
   - Computer Science:
     - cs/index.md
-    - missing-semester: cs/missing-semester.md
+    - auto: cs
   - Reading:
     - reading/index.md
     - auto: reading
