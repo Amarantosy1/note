@@ -6,4 +6,4 @@
 
 ## 待更新
 - [ ] claude-code接入GPT plus的使用体验
-- [ ] 
+- [ ] DeepSeek v4正式版使用体验

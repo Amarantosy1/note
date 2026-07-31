@@ -1,9 +1,4 @@
 ---
-type: note
-discipline: personal
-subject: AI
-topic: 第二次vibe coding记录复盘
-status: permanent
 created: 2026-04-03
 ---
 ## 项目介绍
