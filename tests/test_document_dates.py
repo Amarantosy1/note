@@ -68,19 +68,38 @@ class DocumentDateResolutionTest(unittest.TestCase):
         self.assertEqual(nested.updated.date().isoformat(), "2026-06-14")
         self.assertEqual(scalar.created.date().isoformat(), "2026-05-13")
 
-    def test_git_dates_precede_file_system_dates(self):
-        created = datetime(2022, 2, 2, tzinfo=timezone.utc)
-        updated = datetime(2025, 5, 5, tzinfo=timezone.utc)
+    def test_file_system_creation_date_precedes_git_creation_date(self):
+        file_created = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        git_created = datetime(2022, 2, 2, tzinfo=timezone.utc)
+        git_updated = datetime(2025, 5, 5, tzinfo=timezone.utc)
         git_dates = GitDates(
-            created={"notes/article.md": created},
-            updated={"notes/article.md": updated},
+            created={"notes/article.md": git_created},
+            updated={"notes/article.md": git_updated},
         )
 
-        with patch("zensical_document_dates.dates.load_git_dates", return_value=git_dates):
+        with patch("zensical_document_dates.dates.load_git_dates", return_value=git_dates), patch(
+            "zensical_document_dates.dates._file_created_at",
+            return_value=file_created,
+        ):
             dates = resolve_document_dates(self.docs, "notes/article.md", {})
 
-        self.assertEqual(dates.created, created)
-        self.assertEqual(dates.updated, updated)
+        self.assertEqual(dates.created, file_created)
+        self.assertEqual(dates.updated, git_updated)
+
+    def test_git_creation_date_is_used_when_file_system_date_is_unavailable(self):
+        git_created = datetime(2022, 2, 2, tzinfo=timezone.utc)
+        git_dates = GitDates(
+            created={"notes/article.md": git_created},
+            updated={},
+        )
+
+        with patch("zensical_document_dates.dates.load_git_dates", return_value=git_dates), patch(
+            "zensical_document_dates.dates._file_created_at",
+            return_value=None,
+        ):
+            dates = resolve_document_dates(self.docs, "notes/article.md", {})
+
+        self.assertEqual(dates.created, git_created)
 
     def test_file_system_fallback_uses_modification_time(self):
         timestamp = 1_700_000_000
@@ -100,7 +119,10 @@ class DocumentDateResolutionTest(unittest.TestCase):
     def test_invalid_front_matter_falls_back_to_git(self):
         created = datetime(2022, 2, 2, tzinfo=timezone.utc)
         git_dates = GitDates(created={"notes/article.md": created}, updated={})
-        with patch("zensical_document_dates.dates.load_git_dates", return_value=git_dates):
+        with patch("zensical_document_dates.dates.load_git_dates", return_value=git_dates), patch(
+            "zensical_document_dates.dates._file_created_at",
+            return_value=None,
+        ):
             dates = resolve_document_dates(
                 self.docs,
                 "notes/article.md",
