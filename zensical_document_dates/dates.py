@@ -41,9 +41,9 @@ def resolve_document_dates(
     git_dates = load_git_dates(str(root))
     created = _meta_date(meta, ("created",), nested=("created",))
     if created is None:
-        created = _file_created_at(stat)
-    if created is None:
         created = git_dates.created.get(relative_path)
+    if created is None:
+        created = _file_created_at(stat)
 
     updated = _meta_date(meta, ("updated", "modified"), nested=("updated", "modified"))
     if updated is None:
