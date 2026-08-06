@@ -112,6 +112,7 @@ markdown_extensions:
       zoomable: true
       draggable: true
       skip_classes: []
+  - zensical_paragraph_indent
 
 zensical_nav:
   recursive: true
@@ -162,6 +163,7 @@ extra_css:
   - css/font_modified.css
   - css/obsidian_wiki.css
   - css/document_dates.css
+  - css/paragraph_indent.css
   - vendor/glightbox/glightbox.min.css
   - css/glightbox-overrides.css
   - https://cn-font.claude-code-best.win/packages/hwmct/dist/%E6%B1%87%E6%96%87%E6%98%8E%E6%9C%9D%E4%BD%93/result.css

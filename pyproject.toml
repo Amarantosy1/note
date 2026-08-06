@@ -21,6 +21,7 @@ zensical_document_dates = "zensical_document_dates:DocumentDatesExtension"
 zensical_glightbox = "zensical_glightbox:GlightboxExtension"
 zensical_hardbreak = "zensical_hardbreak:HardBreakExtension"
 zensical_obsidian = "zensical_obsidian:ObsidianWikiExtension"
+zensical_paragraph_indent = "zensical_paragraph_indent:ParagraphIndentExtension"
 
 [tool.setuptools]
-packages = ["zensical_document_dates", "zensical_glightbox", "zensical_hardbreak", "zensical_obsidian", "zensical_nav"]
+packages = ["zensical_document_dates", "zensical_glightbox", "zensical_hardbreak", "zensical_obsidian", "zensical_nav", "zensical_paragraph_indent"]
