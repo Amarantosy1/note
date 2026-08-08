@@ -253,4 +253,204 @@ git config --global alias.visual '!gitk' #将git visual定义为gitk的别名，
 
 ## 3、Git分支
 ### 3.1 分支简介
+一个提交对象包含一个指向暂存内容快照的指针、作者的姓名和邮箱、提交信息、指向它的父对象的指针。
+> 一个例子
+> ![首次提交对象及其树结构。](https://git-scm.com/book/zh/v2/images/commit-and-tree.png)
+> ![提交对象及其父对象。](https://git-scm.com/book/zh/v2/images/commits-and-parents.png)
 
+
+Git 分支本质仅仅是指向提交对象的可变指针。`master`分支不是特殊分支，而是默认创建的，大家都懒得改变，就这样了。
+![分支及其提交历史。](https://git-scm.com/book/zh/v2/images/branch-and-history.png)
+
+#### 分支创建
+```bash
+git branch <branchname> #只是创建了一个可以移动的新的指针,HEAD是指向当前分支的特殊指针，可以想象成是当前所在分支的别名
+git log --online --decorate #查看各个分支当前所指对象
+git checkout <branchname> #讲HEAD切换到一个已存在的分支
+git checkout -b <branchname> #创建一个新分支然后立刻切换过去
+
+```
+
+当在分支做了提交后，切换回`master`，工作目录的文件将变回旧的版本。
+![项目分叉历史。](https://git-scm.com/book/zh/v2/images/advance-master.png)
+
+当在不同分支作出修改并提交时，项目会产生分叉。
+
+```bash
+git log --oneline --decorate --graph --all #查看项目分叉历史
+```
+
+Git的分支实质只是一个校验和，创建一个分支相当于在文件内写入41个字节（40字符+1换行符），速度极快。
+
+### 3.2 分支的新建与合并
+```markdown
+让我们来看一个简单的分支新建与分支合并的例子，实际工作中你可能会用到类似的工作流。 你将经历如下步骤：
+
+1. 开发某个网站。
+    
+2. 为实现某个新的用户需求，创建一个分支。
+    
+3. 在这个分支上开展工作。
+    
+
+正在此时，你突然接到一个电话说有个很严重的问题需要紧急修补。 你将按照如下方式来处理：
+
+1. 切换到你的线上分支（production branch）。
+    
+2. 为这个紧急任务新建一个分支，并在其中修复它。
+    
+3. 在测试通过之后，切换回线上分支，然后合并这个修补分支，最后将改动推送到线上分支。
+    
+4. 切换回你最初工作的分支上，继续工作。
+```
+
+#### 新建分支
+初始状态
+![一个简单的提交历史。](https://git-scm.com/book/zh/v2/images/basic-branching-1.png)
+
+```bash
+git checkout -b iss53
+```
+
+![创建一个新分支指针。](https://git-scm.com/book/zh/v2/images/basic-branching-2.png)
+
+```bash
+#作出修改然后
+git commit -a -m "added sth"
+```
+
+![`iss53` 分支随着工作的进展向前推进。](https://git-scm.com/book/zh/v2/images/basic-branching-3.png)
+
+```bash
+#遇到紧急情况
+git checkout -b hotfix
+#作出一些修改然后
+git commit -a -m 'fixed bugs'
+```
+
+![基于 `master` 分支的紧急问题分支（hotfix branch）。](https://git-scm.com/book/zh/v2/images/basic-branching-4.png)
+
+```bash
+#测试之后合并
+git checkout master
+git merge hotfix #会出现Fast-forward，合并操作
+```
+
+![`master` 被快进到 `hotfix`。](https://git-scm.com/book/zh/v2/images/basic-branching-5.png)
+
+```bash
+#删除不需要的分支
+git branch -d hotfix
+#切换回原分支
+git checkout iss53
+#作出一些修改然后提交
+git commit -a -m 'do sth'
+```
+
+![继续在 `iss53` 分支上的工作。](https://git-scm.com/book/zh/v2/images/basic-branching-6.png)
+
+```bash
+#合并分支
+git checkout master
+git merge iss53 #recursive strategy
+```
+
+![一次典型合并中所用到的三个快照。](https://git-scm.com/book/zh/v2/images/basic-merging-1.png)
+![一个合并提交。](https://git-scm.com/book/zh/v2/images/basic-merging-2.png)
+
+
+```bash
+git branch -d iss53 #删除分支
+```
+
+#### 产生冲突的合并
+解决文件冲突之后使用`git add`来标记冲突已解决
+`git mergetool`可以启用图形化工具一步步解决冲突。
+
+### 3.3 分支管理
+```bash
+git branch -v #查看每个分支的最后一次提交
+git branch --merged #查看已经合并了的分支
+git branch --no-merged #查看包含未合并工作分支
+git branch -D <branchname> #强制删除并放弃未合并内容
+```
+
+### 3.4 分支开发工作流
+#### 长期分支
+可以同时拥有多个开放的分支。稳定分支的指针总是在提交历史中落后一大截，前沿分支往往比较靠前。
+使用多个长期分支对于大型项目很有用
+#### 主题分支
+![拥有多个主题分支的提交历史。|380x301](https://git-scm.com/book/zh/v2/images/topic-branches-1.png)
+![合并了 `dumbidea` 和 `iss91v2` 分支之后的提交历史。](https://git-scm.com/book/zh/v2/images/topic-branches-2.png)
+
+### 3.5 远程分支
+远程引用：对远程仓库的引用
+```bash
+git ls-remote <remote> #获取远程引用完整列表
+```
+
+远程追踪分支：远程分支状态的引用
+
+![克隆之后的服务器与本地仓库。](https://git-scm.com/book/zh/v2/images/remote-branches-1.png)
+
+clone了一个repo到本地
+
+![本地与远程的工作可以分叉。](https://git-scm.com/book/zh/v2/images/remote-branches-2.png)
+别人push了东西到服务器，先`fetch`，然后会更新本地数据
+
+![`git fetch` 更新你的远程仓库引用。](https://git-scm.com/book/zh/v2/images/remote-branches-3.png)
+这时，又clone了一个仓库
+
+![添加另一个远程仓库。](https://git-scm.com/book/zh/v2/images/remote-branches-4.png)
+![远程跟踪分支 `teamone/master`。](https://git-scm.com/book/zh/v2/images/remote-branches-5.png)
+
+
+#### 推送
+```bash
+git push origin serverfix #serverfix被展开为refs/heads/serverfix:refs/heads/serverfix
+git merge origin/serverfix #如果是抓到了别人的更新，则不会自动拷贝文件，需要自己merge到当前分支
+git checkout -b serverfix origin/serverfix #创建一个用于工作的本地分支
+```
+
+#### 追踪分支
+跟踪分支是与远程分支有直接关联的本地分支
+```bash
+git pull #自动识别抓取合并
+git checkout --track origin/serverfix #
+git branch -vv #查看设置的所有追踪分支
+
+```
+#### 拉取
+```bash
+git fetch #从服务器拉取数据但不合并
+git pull #从服务器拉取数据并自动合并，相当于git fetch + git merge
+```
+#### 删除远程分支
+```bash
+git push origin --delete serverfix
+```
+
+### 3.6 变基
+整合分支的两个办法：`merge`和`rebase`
+#### 变基的基本操作
+`merge`把两个分支的最新快照以及二者最近的共同祖先进行三方合并，生成一个新的快照（并提交）
+`rebase`变基，把对某一分支上的所有修改移至另一分支上
+![通过合并操作来整合分叉了的历史。](https://git-scm.com/book/zh/v2/images/basic-rebase-2.png)
+上图为`merge`的效果
+
+```bash
+# rebase
+git checkout experiment
+git rebase master #原理：找到两个分支最近共同祖先，把当前分支的修改存为临时文件，将当前分支指向目标基底，最后将临时文件的修改应用
+```
+
+![将 `C4` 中的修改变基到 `C3` 上。](https://git-scm.com/book/zh/v2/images/basic-rebase-3.png)
+
+```bash 
+git checkout master
+git merge experiment
+```
+
+![`master` 分支的快进合并。](https://git-scm.com/book/zh/v2/images/basic-rebase-4.png)
+
+变基和三方合并的结果没有区别，不同在于提交历史，变基会使提交历史更加简洁

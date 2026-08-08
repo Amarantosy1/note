@@ -10,3 +10,7 @@ docs/.DS_Store
 docs/reading/.DS_Store
 .claude/
 .obsidian
+.obsidian.vimrc
+docs/.DS_Store
+.gitignore
+claude.md
