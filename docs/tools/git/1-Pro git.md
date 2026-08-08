@@ -171,5 +171,86 @@ git mv file_from file_to
 ```bash
 git log #按时间顺序列出所有提交，包括校验和、作者姓名、电子邮件、提交时间、提交说明
 git log -p #--patch 显示每次提交引入的差异，-n参数限制显示数量
-git log --stat #
+git log --stat # 在每次提交下面列出所有被修改的文件、有多少被修改、总结
+git log --pretty=oneline #使用不同于默认格式的方式展示提交历史，online将每个提交放在一行显示，format可以定制记录的显示格式
+git log --pretty=format:"%h %s" --graph
+git log --since=2.weeks #列出最近两周的提交
+git log -S <name> #筛选添加/删除某字符串的提交
 ```
+
+|选项|说明|
+|---|---|
+|`-p`|按补丁格式显示每个提交引入的差异。|
+|`--stat`|显示每次提交的文件修改统计信息。|
+|`--shortstat`|只显示 --stat 中最后的行数修改添加移除统计。|
+|`--name-only`|仅在提交信息后显示已修改的文件清单。|
+|`--name-status`|显示新增、修改、删除的文件清单。|
+|`--abbrev-commit`|仅显示 SHA-1 校验和所有 40 个字符中的前几个字符。|
+|`--relative-date`|使用较短的相对时间而不是完整格式显示日期（比如“2 weeks ago”）。|
+|`--graph`|在日志旁以 ASCII 图形显示分支与合并历史。|
+|`--pretty`|使用其他格式显示历史提交信息。可用的选项包括 oneline、short、full、fuller 和 format（用来定义自己的格式）。|
+|`--oneline`|`--pretty=oneline --abbrev-commit` 合用的简写。|
+
+|选项|说明|
+|---|---|
+|`-<n>`|仅显示最近的 n 条提交。|
+|`--since`, `--after`|仅显示指定时间之后的提交。|
+|`--until`, `--before`|仅显示指定时间之前的提交。|
+|`--author`|仅显示作者匹配指定字符串的提交。|
+|`--committer`|仅显示提交者匹配指定字符串的提交。|
+|`--grep`|仅显示提交说明中包含指定字符串的提交。|
+|`-S`|仅显示添加或删除内容匹配指定字符串的提交。|
+### 2.4 撤销操作
+
+```bash
+git commit --amend #提交完后发现漏了文件/提交信息写错了，替换提交，意义是不让“小修补”这种信息进入提交历史
+git reset HEAD <file> #取消暂存
+git checkout -- <file> #放弃修改，是一个危险的命令，该文件在本地任何的修改都会消失
+
+```
+
+> Git中任何已提交的东西都是可以恢复的，未提交的东西丢失后可能再也找不到。
+
+### 2.5 远程仓库的使用
+`origin`是Git给远程仓库服务器的默认名字。
+```bash
+git remote #查看远程仓库信息
+git remote -v #查看读写远程仓库url
+git remote add <shortname> <url> #添加一个新的远程仓库
+git fetch <reponame> #拉去远程有但本地没有的信息
+git pull #自动抓取后合并远程分支到当前分支
+git push <remote> <branch> #推送
+git remote show <remote> #查看一个远程仓库的更多信息
+git remote rename <name_from> <name_to> #重命名远程仓库简写名
+git remote remove <remote> #移除一个远程仓库
+
+```
+
+### 2.6 打标签
+```bash
+git tag #列出已有标签
+git tag -l "" #按特定模式查找标签
+git tag -a v1.4 -m "my version 1.4" #创建附注标签，附注标签是一个对象，有校验和
+git tag v1.4-lw #创建轻量标签，轻量标签只是一个引用，不是一个对象
+git tag -a v1.2 9fceb02 #给过去补标签
+git push origin <tagname> #将标签推送到远程
+git push origin --tags #将所有标签推送到远程
+git tag -d <tagname> #删除本地仓库轻量标签
+git push origin --delete <tagname> #删除远程标签
+git checkout <tagname> #查看某个标签指向的文件版本，但会使仓库处于detached HEAD状态，需要当心
+
+```
+
+### 2.7 Git别名
+```bash
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk' #将git visual定义为gitk的别名，也就是说，将外部命令定义到git中
+```
+
+## 3、Git分支
+### 3.1 分支简介
+
