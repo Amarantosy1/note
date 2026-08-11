@@ -96,3 +96,74 @@ git revert #创建一个新提交，用于撤销之前某个提交的效果
 ## Exercises
 1、阅读[pro git](https://git-scm.com/book/zh/v2)的前几章
 [[1-Pro git]]
+
+2、clone本课仓库
+```bash
+git clone git@github.com:missing-semester/missing-semester.git
+#1. 图形化版本历史
+git log --pretty=oneline --graph
+#2. Who was the last person to modify README.md
+git log -S README.md
+#3. What was the commit message associated with the last modification to the collections: line of config.yml
+git blame _config.yml
+git show <>
+```
+
+3、从历史中删除文件
+```bash
+git rm --cached <file>
+vim .gitignore
+```
+
+4、clone some repository from GitHub, and modify one of its existing files. What happens when you do `git stash`? What do you see when running `git log --all --oneline`? Run `git stash pop` to undo what you did with `git stash`. In what scenario might this be useful?
+```bash
+git clone <>
+vim <>
+git stash #临时保存（隐藏）一些修改
+git stash pop #删除stash，显示隐藏的保存
+git stash apply #恢复，同时保修stash
+# 可以在有未暂存的东西，而又需要切换分支的时候用
+```
+
+5、创建别名
+```bash
+git config --global alias.graph 'log --all --graph --decorate --oneline'
+```
+
+6、global ignore
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+~
+vim .gitignore_global
+```
+
+7、first contribution
+![[lecture5-version control and git-1786439980336.webp]]
+
+fork-clone-edit-add-commit-push-pr
+
+8、模拟解决合并冲突
+```bash
+git init
+vim recipe.txt
+git add -A
+git commit
+
+git chekout -b salty #create and switch to salty branch
+vim recipe.txt #add one line
+git add recipe.txt
+git commit -m "add salty"
+
+git checkout main #git switch main
+git checkout -b sweet
+vim recipe.txt #add one line different from salty
+git add recipe.txt
+git commit -m "add sweet"
+
+git switch main
+git merge salty
+git merge sweet #conflict
+
+git mergetool #GUI to solve conflict
+
+```
