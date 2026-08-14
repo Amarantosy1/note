@@ -3,4 +3,4 @@
 目前已更新：
 
 - [x] missing-semester
-
+- [ ] CS61A
