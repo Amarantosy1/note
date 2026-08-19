@@ -139,9 +139,9 @@ nav:
   - Art:
     - art/index.md
     - auto: art
-  - Media:
-    - media/index.md
-    - auto: media
+  #- Media:
+   # - media/index.md
+    #- auto: media
   - Tools: 
     - tools/index.md
     - auto: tools
