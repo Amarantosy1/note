@@ -218,3 +218,121 @@ Memory要解决的问题：哪些信息值得跨对话保存，当前任务应�
 ![[1-learn-claude-code-1787225545632.webp]]
 
 ### 存储：一个记忆一个文件
+每条记忆是`.memory/`下的一个Markdown文件
+type有四类：user记录用户的长期偏好，feedback记录以后仍适用的工作反馈，project记录稳定的项目事实
+### 召回：先选择，再加载正文
+由大模型完成记忆挑选
+### 提取：回合结束后保存可复用信息
+### 整理：合并重复和过期内容
+旧文件被替换前会保存快照
+
+## s10-Task System
+Todo是让agent记录当前任务执行步骤，提醒不要忘记。Task System负责记录每个任务独立的ID和状态，`blockedBy`记录前置任务，`owner`记录执行agent
+
+![[1-learn-claude-code-1787240657342.webp]]
+
+![[1-learn-claude-code-1787240781157.webp]]
+
+## s11-Background Tasks
+
+> The agent can keep reasoning while slow work completes elsewhere
+
+任务图有了，但全量测试、安装依赖和部署等命令可能需要很长时间。同步执行这些命令时，Agent Loop 会一直停在当前工具调用上，只有命令结束后才能继续处理其他工作。
+
+s11 Background Tasks → 把慢操作放到后台。Agent 可以继续处理其他任务，后台执行完成后再接收通知。
+
+![[1-learn-claude-code-1787241673425.webp]]
+
+### should_run_background: 显示请求
+是否进入后台由工具调用明确决定
+
+### Background Manager: 后台执行与生命周期
+### collect_background_results: 通知收集
+
+## s12-Cron Scheduler
+后台任务解决了"慢操作不阻塞"。但如果想定时做某件事呢？比如"每天早上 9 点跑测试"、"每 5 分钟检查一次服务器状态"。
+s12 Cron Scheduler → 给 Agent 装一个闹钟。
+
+> Recurring work should be created by the harness, not remembered by the model
+
+![[1-learn-claude-code-1787243455915.webp]]
+
+## s13-Agent Team Runtime
+
+![[1-learn-claude-code-1787243679995.webp]]
+
+### 1.Lead先提出团队，再等待用户确认
+### 2.每个队友拥有独立循环
+subagent是一次性调用，队友则是持久执行单元
+### 3.MessageBus把通信放在模型上下文之外
+Lead和队友不能共享一个message数组。
+### 4.收件箱事件由运行时投递
+### 5.结果与IDLE是两个事件
+就是说，一个队友干完之后会发送干完了和等待工作两条消息
+### 6.IDLE先看收件箱，再找ready task
+队友进入IDLE先处理消息，再检查共享任务板
+### 7.发现和认领分成两步，认领必须原子执行
+### 8.认领后的工作复用同一个WORK循环
+### 9.由任务选择工具的工作目录
+选择worktree或在主目录
+### 10.worktree的移除由宿主负责
+### 11.控制消息使用类型和request_id
+### 12.计划审批会约束执行
+
+## s14-MCP Tools
+Lead 和队友目前只能调用直接写在 `code.py` 里的工具。接入 Jira、部署平台或知识库时，Harness 还要为每个外部系统分别编写工具定义和调用逻辑；外部系统增加或修改工具，也要跟着修改课程代码。
+
+s14 MCP Tools → 通过统一的发现与调用协议，在运行时连接外部服务并把它们的工具加入工具池。
+
+> External services can become agent tools through a standard discovery and call protocal
+
+接入文档系统和部署平台时，我们还可以继续手写 `search_docs`、`deploy_status` 和 `trigger_deploy`，但每增加一个服务，都要重新维护工具定义、参数格式和调用代码。
+
+![[1-learn-claude-code-1787301098546.webp]]
+
+### 1.Agentloop不需要改变
+### 2.MCPClient保存发现结果和调用入口
+### 3.connect_mcp只负责连接和发现
+### 4.前缀区分不同server的同名工具
+### 5.工具定义和handler一起加入工具池
+### 6.权限由宿主配置决定
+### 7.工具输入错误留在工具边界内
+
+## s15-Agent Harness集成
+多种机制、一个循环。
+一个能长期工作的 coding agent 需要同时拥有：
+
+- 工具分发和权限边界
+- hooks 扩展点
+- todo 计划和任务图
+- 技能、记忆、系统 prompt 组装
+- 压缩和错误恢复
+- 后台任务和 cron 调度
+- 团队、协议和 idle 任务认领
+- 任务绑定的 worktree
+- MCP 外部工具接入
+
+![[1-learn-claude-code-1787301479563.webp]]
+
+![[1-learn-claude-code-1787301972190.webp]]
+
+## s16-Workflow Runtime
+有些任务重复一套固定的流程。执行前已经知道步骤和先后关系。这样就可以用workflow写入代码。
+
+## s17-Goal Loop
+是否停止循环由一个独立判断器决定。
+
+![[1-learn-claude-code-1787302919344.webp]]
+
+### 1. /goal是一个会话级Stop hook
+### 2. 判断器是一次独立的模型调用
+### 3.对话记录就是判断依据
+对话器终究只是一个只读对话的模型，可靠性取决于对话里有没有把关键结果说清楚。
+### 4.好的完成条件要能检查
+结束状态、验证方式、限制条件
+### 5.没完成就回到同一个循环
+### 6.后台任务没有结束时，先不要判断
+### 7.自动继续也必须要有出口
+任何自动机制都不能无限占住一次请求。
+停止出口：全局max_turns，stop hook
+### 8.查看、替换和清除
