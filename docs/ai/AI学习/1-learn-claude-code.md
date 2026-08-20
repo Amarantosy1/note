@@ -151,3 +151,70 @@ flowchart TD
 ![[1-learn-claude-code-1787211830207.webp]]
 
 ## s05-TodoWrite
+
+问题：注意力稀释
+（🤔：需要这些工具的原因是model的context不够用，如果够用的话这些工具其实不是必要的，但是会不会有了这些工具之后，一个强大的模型会变的更强大，还是会被拖累，拭目以待。
+
+![[1-learn-claude-code-1787213941001.webp]]
+
+todo_write本质上是一个tool
+
+## s06-Subagent
+新的问题：如果一个任务太大，todo列表也不够，那就需要subagent
+
+> Subagents give each subtask a clean message history while preserving the main thread.
+
+![[1-learn-claude-code-1787214555035.webp]]
+
+父agent和子agent共享workdir
+只有一层委派
+
+## s07-Skills
+一方面，也是因为上下文的问题，不同的任务需要不同的知识；另一方面一个重复的流程完全可以封装成一个skill进行复用
+
+![[1-learn-claude-code-1787223157974.webp]]
+
+## s08-Context Compact
+上下文总是会满，压缩让有限的上下文持续服务于长任务
+
+![[1-learn-claude-code-1787223360175.webp]]
+
+压缩管线设计
+
+![[1-learn-claude-code-1787223548686.webp]]
+
+### 第一步：tool_result_budget
+工具返回结果预算
+
+![[1-learn-claude-code-1787223665000.webp]]
+
+### 第二步：snip_compact
+用于控制消息数量
+先把完整历史写入`.transcripst/`，再保留头尾，中间明确标记会写明删去了多少消息，以及完整记录在哪里
+
+### 第三步：micro_compact
+
+![[1-learn-claude-code-1787224048543.webp]]
+
+前面读过的后面就不用读了
+
+### 第四步：compact_history
+
+![[1-learn-claude-code-1787224469677.webp]]
+
+## s09-Memory
+
+> Some facts should survive summarization and future sessions
+
+Memory要解决的问题：哪些信息值得跨对话保存，当前任务应该回取哪几条。
+
+
+![[1-learn-claude-code-1787225421888.webp]]
+
+### 全部写入，不合适
+可能会引入很多无关紧要的东西。一种更合适的方式：保留剪短的索引，只在需要时加载正文。
+需要处理的四件事情：存储、召回、提取和整理
+
+![[1-learn-claude-code-1787225545632.webp]]
+
+### 存储：一个记忆一个文件
