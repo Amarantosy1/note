@@ -50,3 +50,30 @@ reinforcement learning: How can I learn a policy for any situation so that I can
 
 ## Lecture2-Search
 
+### 1、Agents that Plan Ahead
+#### Reflex Agent(反射型)
+
+- 基于当前感知/记忆选择行动
+- may have memory or a model of the world's current state
+- 不考虑行动后果
+- 只考虑世界“现在”的状态
+
+#### Planning agent(规划型)
+
+- Ask "What if"
+- Decisions based on (hypothesized) consequences of actions
+- Must have a model of how the wold evolves in response to actions
+- Must formulate a goal
+- 考虑世界“将来”会是怎么样
+
+### 2、Search Problems
+
+A search problem consist of:
+
+- A state space
+- A successor function(with actions)
+- A start state and a goal test
+
+A solution is a sequence of actions which transforms the start state to a goal state
+
+
